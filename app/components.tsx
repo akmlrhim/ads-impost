@@ -131,6 +131,22 @@ export function SiteHeader({
   );
 }
 
+export function FigureBand({ src, alt }: { src: string; alt: string }) {
+  return (
+    <Reveal>
+      <figure className="border-b border-impost-third/25">
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          className="h-[34vh] w-full object-cover brightness-[0.7] saturate-[0.85] md:h-[46vh]"
+        />
+      </figure>
+    </Reveal>
+  );
+}
+
 export function SiteFooter() {
   return (
     <footer className="border-t border-impost-third/25">
