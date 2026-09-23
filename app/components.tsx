@@ -38,15 +38,16 @@ export function Reveal({
     return () => io.disconnect();
   }, []);
 
+  const AnyTag = Tag as unknown as React.ElementType;
+
   return (
-    // @ts-expect-error polymorphic ref is safe here
-    <Tag
+    <AnyTag
       ref={ref}
       className={`reveal ${className}`}
       style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
     >
       {children}
-    </Tag>
+    </AnyTag>
   );
 }
 
