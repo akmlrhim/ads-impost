@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { Chapter, CtaPlate, Reveal, SiteFooter, SiteHeader } from "../components";
+import {
+  Chapter,
+  CtaPlate,
+  FigureBand,
+  Reveal,
+  SiteFooter,
+  SiteHeader,
+} from "../components";
 import {
   HeroParallax,
   Kinetic,
@@ -134,6 +141,12 @@ export default function PropertyPage() {
           </div>
         </section>
 
+        {/* BAND — placeholder project property */}
+        <FigureBand
+          src="https://picsum.photos/seed/impost-property-tower/1600/800"
+          alt="Placeholder fasad tower property modern"
+        />
+
         {/* 02 — MASALAH */}
         <StackChapter no="02" tone="bronze">
           <div className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
@@ -146,17 +159,28 @@ export default function PropertyPage() {
                   Biasanya masalahnya ada di sini:
                 </p>
               </Reveal>
-              <ol className="mt-10 border-t border-impost-third/25">
+              <ol className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-12">
                 {PROBLEMS.map((p, i) => (
-                  <Reveal as="li" key={p.no} delay={i * 60}>
-                    <div className="grid gap-1 border-b border-impost-third/25 py-6 sm:grid-cols-12 sm:gap-4">
-                      <p className="text-sm font-bold tracking-[0.16em] text-impost-secondary tabular-nums sm:col-span-2">
+                  <Reveal
+                    as="li"
+                    key={p.no}
+                    delay={i * 60}
+                    className={
+                      i === 0
+                        ? "md:col-span-5"
+                        : i === 1
+                          ? "md:col-span-5 md:col-start-8"
+                          : "md:col-span-6 md:col-start-4"
+                    }
+                  >
+                    <div className="border-t-2 border-impost-secondary/70 pt-5">
+                      <p className="text-sm font-bold tracking-[0.16em] text-impost-secondary tabular-nums">
                         {p.no}
                       </p>
-                      <p className="text-xl font-extrabold tracking-tight uppercase sm:col-span-4">
+                      <p className="mt-3 text-2xl font-extrabold tracking-tight uppercase md:text-3xl">
                         {p.name}
                       </p>
-                      <p className="leading-[1.7] text-impost-ink-dim sm:col-span-6">
+                      <p className="mt-2 leading-[1.7] text-impost-ink-dim">
                         {p.desc}
                       </p>
                     </div>
@@ -287,6 +311,12 @@ export default function PropertyPage() {
             </Chapter>
           </div>
         </StackChapter>
+
+        {/* BAND — placeholder fasilitas project */}
+        <FigureBand
+          src="https://picsum.photos/seed/impost-property-lobby/1600/800"
+          alt="Placeholder lobi dan fasilitas project"
+        />
 
         {/* 06 — CTA AKHIR */}
         <section>
