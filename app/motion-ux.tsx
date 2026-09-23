@@ -94,8 +94,7 @@ export function StackChapter({
 
   return (
     <section
-      // @ts-expect-error section ref is safe here
-      ref={ref}
+      ref={ref as React.Ref<HTMLElement>}
       className={`relative border-b border-impost-third/25 ${
         solid ? "bg-impost-fourth" : "bg-impost-fifth"
       }`}
