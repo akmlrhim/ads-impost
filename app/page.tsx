@@ -1,69 +1,68 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import { Reveal } from "./components";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Impost — Pilih Vertical",
+  description: "Marketing klinik dan property yang punya jalur.",
+};
+
+export default function RootPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="flex min-h-dvh flex-col">
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 py-20 md:px-8">
+        <Reveal>
+          <p className="text-sm font-extrabold tracking-[0.22em] uppercase">
+            Impost
           </p>
+          <h1 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-[-0.03em] leading-[0.95] text-balance md:text-6xl">
+            Marketing yang punya jalur, bukan sekadar traffic.
+          </h1>
+        </Reveal>
+        <div className="mt-12 grid gap-px border border-impost-third/25 bg-impost-third/25 md:grid-cols-2">
+          <Reveal delay={60}>
+            <a
+              href="/klinik"
+              className="group flex h-full flex-col justify-between gap-10 bg-impost-fifth p-8 transition-colors hover:bg-impost-fourth/40"
+            >
+              <p className="text-sm font-bold tracking-[0.16em] text-impost-primary uppercase">
+                Klinik
+              </p>
+              <div>
+                <p className="text-2xl font-extrabold tracking-tight">
+                  Treatment → konten → iklan → reservasi.
+                </p>
+                <p className="mt-3 font-bold text-impost-primary">
+                  Lihat jalur klinik
+                  <span aria-hidden="true" className="ml-2">
+                    →
+                  </span>
+                </p>
+              </div>
+            </a>
+          </Reveal>
+          <Reveal delay={120}>
+            <a
+              href="/property"
+              className="group flex h-full flex-col justify-between gap-10 bg-impost-fifth p-8 transition-colors hover:bg-impost-fourth/40"
+            >
+              <p className="text-sm font-bold tracking-[0.16em] text-impost-secondary uppercase">
+                Property
+              </p>
+              <div>
+                <p className="text-2xl font-extrabold tracking-tight">
+                  Perhatian → kepercayaan → inquiry.
+                </p>
+                <p className="mt-3 font-bold text-impost-secondary">
+                  Lihat jalur property
+                  <span aria-hidden="true" className="ml-2">
+                    →
+                  </span>
+                </p>
+              </div>
+            </a>
+          </Reveal>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
