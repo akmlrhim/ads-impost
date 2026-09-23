@@ -54,15 +54,15 @@ const PATH = [
 
 const SERVICES = [
   {
-    name: "Branding dan Growth",
-    desc: "Positioning dan arah komunikasi project.",
+    name: "Branding & Growth",
+    desc: "Positioning & arah komunikasi project.",
   },
   {
-    name: "Content dan Social Media",
+    name: "Content & Social Media",
     desc: "Membuat project lebih menarik dan mudah dipahami.",
   },
   {
-    name: "Website dan Landing Page",
+    name: "Website & Landing Page",
     desc: "Tempat buyer mempelajari project sebelum bertanya.",
   },
   {
@@ -70,7 +70,7 @@ const SERVICES = [
     desc: "Mendatangkan audience dan mengoptimalkan campaign.",
   },
   {
-    name: "Creative dan Production",
+    name: "Creative & Production",
     desc: "Visual yang membuat project lebih layak diperhatikan.",
   },
 ];
@@ -96,7 +96,7 @@ export default function PropertyPage() {
                 </p>
               </Reveal>
               <Reveal delay={60}>
-                <h1 className="mt-6 text-5xl leading-[0.95] font-extrabold tracking-[-0.03em] text-balance md:text-7xl">
+                <h1 className="mt-6 text-5xl leading-[0.95] font-extrabold tracking-[-0.03em] text-balance md:text-6xl">
                   Sudah Keluar Budget Marketing. Tapi Buyer Property Masih
                   Harus Dikejar Sales?
                 </h1>
@@ -110,9 +110,8 @@ export default function PropertyPage() {
                   sales mengulang penjelasan dari nol.
                 </p>
                 <p className="mt-4 max-w-md text-base leading-[1.7]">
-                  Kami membantu developer membangun jalur marketing dari
-                  menarik perhatian, membangun kepercayaan, sampai menghasilkan
-                  inquiry.
+                  Kami membantu developer membangun jalur marketing dari menarik
+                  perhatian → membangun kepercayaan → menghasilkan inquiry.
                 </p>
                 <div className="mt-8">
                   <CtaPlate href={WA_PROPERTY} tone="bronze">

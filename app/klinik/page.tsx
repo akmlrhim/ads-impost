@@ -22,7 +22,7 @@ const PATH = [
   {
     no: "02",
     name: "TARIK",
-    desc: "Perhatian calon pasien lewat konten dan campaign.",
+    desc: "Perhatian calon pasien lewat konten & campaign.",
   },
   {
     no: "03",
@@ -34,9 +34,9 @@ const PATH = [
 
 const SERVICES = [
   "Strategy Marketing",
-  "Content dan Social Media",
+  "Content & Social Media",
   "Performance Marketing",
-  "Website dan Landing Page",
+  "Website & Landing Page",
 ];
 
 export default function KlinikPage() {
@@ -59,7 +59,7 @@ export default function KlinikPage() {
                 </p>
               </Reveal>
               <Reveal delay={60}>
-                <h1 className="mt-6 text-5xl leading-[0.95] font-extrabold tracking-[-0.03em] text-balance md:text-7xl">
+                <h1 className="mt-6 text-5xl leading-[0.95] font-extrabold tracking-[-0.03em] text-balance md:text-6xl">
                   Budget Marketing Terus Keluar. Tapi Pasien Baru Belum
                   Konsisten?
                 </h1>
@@ -69,8 +69,8 @@ export default function KlinikPage() {
               <Reveal delay={120}>
                 <p className="text-xl font-bold">Jangan cuma cari traffic.</p>
                 <p className="mt-4 max-w-md text-base leading-[1.7] text-impost-ink-dim">
-                  Kami bantu klinik membangun jalur dari treatment yang tepat,
-                  konten, iklan, sampai reservasi.
+                  Kami bantu klinik membangun jalur dari treatment yang tepat →
+                  konten → iklan → reservasi.
                 </p>
                 <div className="mt-8">
                   <CtaPlate href={WA_KLINIK}>
