@@ -53,15 +53,19 @@ export function Reveal({
 export function Chapter({
   no,
   children,
+  tone = "gold",
 }: {
   no: string;
   children: React.ReactNode;
+  tone?: "gold" | "bronze";
 }) {
+  const numeral =
+    tone === "gold" ? "text-impost-primary" : "text-impost-secondary";
   return (
     <div className="grid gap-6 md:grid-cols-12 md:gap-8">
       <div
         aria-hidden="true"
-        className="text-5xl font-extrabold tabular-nums tracking-tight text-impost-primary md:col-span-3 md:text-6xl"
+        className={`text-5xl font-extrabold tabular-nums tracking-tight md:col-span-3 md:text-6xl ${numeral}`}
       >
         {no}
       </div>
@@ -97,11 +101,15 @@ export function SiteHeader({
   vertical,
   ctaHref,
   ctaLabel,
+  tone = "gold",
 }: {
   vertical: string;
   ctaHref: string;
   ctaLabel: string;
+  tone?: "gold" | "bronze";
 }) {
+  const link =
+    tone === "gold" ? "text-impost-primary" : "text-impost-secondary";
   return (
     <header className="border-b border-impost-third/25">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 md:px-8">
@@ -113,7 +121,7 @@ export function SiteHeader({
         </p>
         <a
           href={ctaHref}
-          className="text-sm font-bold text-impost-primary underline-offset-4 hover:underline"
+          className={`text-sm font-bold underline-offset-4 hover:underline ${link}`}
         >
           {ctaLabel}
         </a>
