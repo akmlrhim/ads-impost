@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import { Chapter, CtaPlate, Reveal, SiteFooter, SiteHeader } from "../components";
+import {
+  HeroParallax,
+  Kinetic,
+  PageProgress,
+  StackChapter,
+} from "../motion-ux";
 
 // TODO: ganti dengan nomor WA asli. Pola pre-filled text siap pakai.
 const WA_KLINIK =
@@ -42,6 +48,7 @@ const SERVICES = [
 export default function KlinikPage() {
   return (
     <div className="[--accent:var(--color-impost-primary)]">
+      <PageProgress />
       <SiteHeader
         vertical="Klinik"
         ctaHref={WA_KLINIK}
@@ -58,14 +65,11 @@ export default function KlinikPage() {
                   Impost — Performance Marketing untuk Klinik
                 </p>
               </Reveal>
-              <Reveal delay={60}>
-                <h1 className="mt-6 text-5xl leading-[0.95] font-extrabold tracking-[-0.03em] text-balance md:text-6xl">
-                  Budget Marketing Terus Keluar. Tapi Pasien Baru Belum
-                  Konsisten?
-                </h1>
-              </Reveal>
+              <h1 className="mt-6 text-5xl leading-[0.95] font-extrabold tracking-[-0.03em] text-balance md:text-6xl">
+                <Kinetic text="Budget Marketing Terus Keluar. Tapi Pasien Baru Belum Konsisten?" />
+              </h1>
             </div>
-            <div className="lg:col-span-5 lg:pt-24">
+            <HeroParallax className="lg:col-span-5 lg:pt-24">
               <Reveal delay={120}>
                 <p className="text-xl font-bold">Jangan cuma cari traffic.</p>
                 <p className="mt-4 max-w-md text-base leading-[1.7] text-impost-ink-dim">
@@ -84,12 +88,12 @@ export default function KlinikPage() {
                   Cari tahu bagian marketing mana yang masih bocor.
                 </p>
               </Reveal>
-            </div>
+            </HeroParallax>
           </div>
         </section>
 
         {/* 02 — MASALAH */}
-        <section className="border-b border-impost-third/25">
+        <StackChapter no="02">
           <div className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
             <Chapter no="02">
               <Reveal>
@@ -124,10 +128,10 @@ export default function KlinikPage() {
               </Reveal>
             </Chapter>
           </div>
-        </section>
+        </StackChapter>
 
         {/* 03 — JALUR */}
-        <section className="border-b border-impost-third/25 bg-impost-fourth/25">
+        <StackChapter no="03" solid>
           <div className="mx-auto w-full max-w-6xl px-5 py-20 md:px-8 md:py-28">
             <Chapter no="03">
               <Reveal>
@@ -160,10 +164,10 @@ export default function KlinikPage() {
               </Reveal>
             </Chapter>
           </div>
-        </section>
+        </StackChapter>
 
         {/* 04 — ANGKA */}
-        <section className="border-b border-impost-third/25">
+        <StackChapter no="04">
           <div className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
             <Chapter no="04">
               <Reveal>
@@ -194,10 +198,10 @@ export default function KlinikPage() {
               </Reveal>
             </Chapter>
           </div>
-        </section>
+        </StackChapter>
 
         {/* 05 — LAYANAN: ledger, bukan kartu */}
-        <section className="border-b border-impost-third/25 bg-impost-fourth/25">
+        <StackChapter no="05" solid>
           <div className="mx-auto w-full max-w-6xl px-5 py-20 md:px-8 md:py-28">
             <Chapter no="05">
               <Reveal>
@@ -227,7 +231,7 @@ export default function KlinikPage() {
               </Reveal>
             </Chapter>
           </div>
-        </section>
+        </StackChapter>
 
         {/* 06 — CTA AKHIR */}
         <section>
@@ -235,7 +239,7 @@ export default function KlinikPage() {
             <div className="lg:col-span-7">
               <Reveal>
                 <h2 className="max-w-2xl text-4xl font-extrabold tracking-[-0.03em] leading-[0.95] text-balance md:text-6xl">
-                  Jangan Tunggu Jadwal Kosong Baru Panik Cari Pasien.
+                  <Kinetic text="Jangan Tunggu Jadwal Kosong Baru Panik Cari Pasien." />
                 </h2>
               </Reveal>
             </div>
