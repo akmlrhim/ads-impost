@@ -91,7 +91,7 @@ export function CtaPlate({
   return (
     <a
       href={href}
-      className={`inline-flex min-h-12 items-center justify-center px-7 py-3.5 text-base font-bold tracking-tight transition-colors ${fill}`}
+      className={`cta-plate inline-flex min-h-12 items-center justify-center px-7 py-3.5 text-base font-bold tracking-tight transition-colors ${fill}`}
     >
       {children}
     </a>

@@ -33,6 +33,20 @@ body {
   outline-offset: 3px;
 }
 
+/* CTA hover physics: plate nudges, arrow slips forward. Transform only. */
+.cta-plate > span {
+  display: inline-block;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-plate:hover > span {
+  transform: translateX(5px);
+}
+
+.cta-plate:active {
+  transform: translateY(1px);
+}
+
 /* Scroll-reveal: opacity + 12px rise, fires once via IntersectionObserver */
 .reveal {
   opacity: 0;
