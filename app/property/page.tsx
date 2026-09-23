@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import { Chapter, CtaPlate, Reveal, SiteFooter, SiteHeader } from "../components";
+import {
+  HeroParallax,
+  Kinetic,
+  PageProgress,
+  StackChapter,
+} from "../motion-ux";
 
 // TODO: ganti dengan nomor WA asli. Pola pre-filled text siap pakai.
 const WA_PROPERTY =
@@ -78,6 +84,7 @@ const SERVICES = [
 export default function PropertyPage() {
   return (
     <div>
+      <PageProgress tone="bronze" />
       <SiteHeader
         vertical="Property"
         ctaHref={WA_PROPERTY}
@@ -95,14 +102,11 @@ export default function PropertyPage() {
                   Impost — Performance Marketing untuk Property
                 </p>
               </Reveal>
-              <Reveal delay={60}>
-                <h1 className="mt-6 text-5xl leading-[0.95] font-extrabold tracking-[-0.03em] text-balance md:text-6xl">
-                  Sudah Keluar Budget Marketing. Tapi Buyer Property Masih
-                  Harus Dikejar Sales?
-                </h1>
-              </Reveal>
+              <h1 className="mt-6 text-5xl leading-[0.95] font-extrabold tracking-[-0.03em] text-balance md:text-6xl">
+                <Kinetic text="Sudah Keluar Budget Marketing. Tapi Buyer Property Masih Harus Dikejar Sales?" />
+              </h1>
             </div>
-            <div className="lg:col-span-5 lg:pt-24">
+            <HeroParallax className="lg:col-span-5 lg:pt-24">
               <Reveal delay={120}>
                 <p className="max-w-md text-base leading-[1.7] text-impost-ink-dim">
                   Marketing seharusnya membantu sales mendapatkan buyer yang
@@ -126,12 +130,12 @@ export default function PropertyPage() {
                   penjualan.
                 </p>
               </Reveal>
-            </div>
+            </HeroParallax>
           </div>
         </section>
 
         {/* 02 — MASALAH */}
-        <section className="border-b border-impost-third/25">
+        <StackChapter no="02" tone="bronze">
           <div className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
             <Chapter no="02" tone="bronze">
               <Reveal>
@@ -167,10 +171,10 @@ export default function PropertyPage() {
               </Reveal>
             </Chapter>
           </div>
-        </section>
+        </StackChapter>
 
         {/* 03 — JALUR */}
-        <section className="border-b border-impost-third/25 bg-impost-fourth/25">
+        <StackChapter no="03" tone="bronze" solid>
           <div className="mx-auto w-full max-w-6xl px-5 py-20 md:px-8 md:py-28">
             <Chapter no="03" tone="bronze">
               <Reveal>
@@ -207,10 +211,10 @@ export default function PropertyPage() {
               </Reveal>
             </Chapter>
           </div>
-        </section>
+        </StackChapter>
 
         {/* 04 — ANGKA */}
-        <section className="border-b border-impost-third/25">
+        <StackChapter no="04" tone="bronze">
           <div className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
             <Chapter no="04" tone="bronze">
               <Reveal>
@@ -243,10 +247,10 @@ export default function PropertyPage() {
               </Reveal>
             </Chapter>
           </div>
-        </section>
+        </StackChapter>
 
         {/* 05 — LAYANAN */}
-        <section className="border-b border-impost-third/25 bg-impost-fourth/25">
+        <StackChapter no="05" tone="bronze" solid>
           <div className="mx-auto w-full max-w-6xl px-5 py-20 md:px-8 md:py-28">
             <Chapter no="05" tone="bronze">
               <Reveal>
@@ -282,7 +286,7 @@ export default function PropertyPage() {
               </Reveal>
             </Chapter>
           </div>
-        </section>
+        </StackChapter>
 
         {/* 06 — CTA AKHIR */}
         <section>
@@ -290,8 +294,7 @@ export default function PropertyPage() {
             <div className="lg:col-span-7">
               <Reveal>
                 <h2 className="max-w-2xl text-4xl font-extrabold tracking-[-0.03em] leading-[0.95] text-balance md:text-6xl">
-                  Project Anda Sudah Bernilai Miliaran. Jangan Biarkan Marketing
-                  Menjadi Bagian yang Paling Tidak Pasti.
+                  <Kinetic text="Project Anda Sudah Bernilai Miliaran. Jangan Biarkan Marketing Menjadi Bagian yang Paling Tidak Pasti." />
                 </h2>
               </Reveal>
             </div>
