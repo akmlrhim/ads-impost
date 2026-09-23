@@ -112,7 +112,7 @@ export function SiteHeader({
   const link =
     tone === "gold" ? "text-impost-primary" : "text-impost-secondary";
   return (
-    <header className="border-b border-impost-third/25">
+    <header className="sticky top-0 z-40 border-b border-impost-third/25 bg-impost-fifth">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 md:px-8">
         <p className="text-sm font-extrabold tracking-[0.22em] uppercase">
           Impost
