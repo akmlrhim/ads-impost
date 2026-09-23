@@ -9,7 +9,11 @@ import {
   useTransform,
 } from "motion/react";
 
-// Word-mask kinetic reveal. No measurement, wraps naturally.
+// Word-mask kinetic reveal. IO runs on the unclipped container driving
+// children variants — observing the masked words themselves never fires
+// because the mask clips them below the threshold. No measurement.
+const EASE = [0.16, 1, 0.3, 1] as const;
+
 export function Kinetic({
   text,
   className = "",
@@ -21,22 +25,28 @@ export function Kinetic({
   if (reduce) return <span className={className}>{text}</span>;
   const words = text.split(" ");
   return (
-    <span className={className} aria-label={text} role="text">
+    <motion.span
+      className={className}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.4 }}
+      variants={{
+        show: { transition: { staggerChildren: 0.045, delayChildren: 0.05 } },
+      }}
+    >
       {words.map((w, i) => (
         <span
           key={i}
-          aria-hidden="true"
           className="-mb-1 inline-block overflow-hidden pb-1 align-bottom"
         >
           <motion.span
             className="inline-block will-change-transform"
-            initial={{ y: "110%" }}
-            whileInView={{ y: "0%" }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.05 + i * 0.045,
-              ease: [0.16, 1, 0.3, 1],
+            variants={{
+              hidden: { y: "110%" },
+              show: {
+                y: "0%",
+                transition: { duration: 0.7, ease: EASE },
+              },
             }}
           >
             {w}
@@ -44,7 +54,7 @@ export function Kinetic({
           </motion.span>
         </span>
       ))}
-    </span>
+    </motion.span>
   );
 }
 
