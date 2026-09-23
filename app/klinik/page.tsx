@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { Chapter, CtaPlate, Reveal, SiteFooter, SiteHeader } from "../components";
+import {
+  Chapter,
+  CtaPlate,
+  FigureBand,
+  Reveal,
+  SiteFooter,
+  SiteHeader,
+} from "../components";
 import {
   HeroParallax,
   Kinetic,
@@ -92,6 +99,12 @@ export default function KlinikPage() {
           </div>
         </section>
 
+        {/* BAND — placeholder suasana klinik */}
+        <FigureBand
+          src="https://picsum.photos/seed/impost-klinik-room/1600/800"
+          alt="Placeholder suasana ruang treatment klinik"
+        />
+
         {/* 02 — MASALAH */}
         <StackChapter no="02">
           <div className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
@@ -102,24 +115,30 @@ export default function KlinikPage() {
                 </h2>
                 <p className="mt-4 text-lg text-impost-ink-dim">Tapi...</p>
               </Reveal>
-              <ul className="mt-10 border-t border-impost-third/25">
+              <div className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-12">
                 {PROBLEMS.map((p, i) => (
-                  <Reveal as="li" key={p.lead} delay={i * 60}>
-                    <div className="flex items-baseline gap-4 border-b border-impost-third/25 py-5">
-                      <span
-                        aria-hidden="true"
-                        className="font-bold text-impost-primary"
-                      >
-                        →
-                      </span>
-                      <p className="text-lg leading-relaxed md:text-xl">
-                        <strong className="font-bold">{p.lead}</strong>
-                        <span className="text-impost-ink-dim"> {p.rest}</span>
+                  <Reveal
+                    key={p.lead}
+                    delay={i * 60}
+                    className={
+                      i === 0
+                        ? "md:col-span-7"
+                        : i === 1
+                          ? "md:col-span-7 md:col-start-6"
+                          : "md:col-span-7 md:col-start-3"
+                    }
+                  >
+                    <div className="border-t-2 border-impost-primary/70 pt-5">
+                      <p className="text-2xl font-extrabold tracking-tight md:text-3xl">
+                        {p.lead}
+                      </p>
+                      <p className="mt-2 text-lg text-impost-ink-dim">
+                        {p.rest}
                       </p>
                     </div>
                   </Reveal>
                 ))}
-              </ul>
+              </div>
               <Reveal>
                 <p className="mt-8 max-w-xl text-base leading-[1.7] text-impost-ink-dim">
                   Marketing terlihat sibuk. Tapi jadwal treatment tetap
@@ -182,18 +201,20 @@ export default function KlinikPage() {
                 </p>
               </Reveal>
               <Reveal delay={60}>
-                <div className="mt-10 border-t border-impost-third/40 pt-8">
-                  <p className="text-6xl font-extrabold tracking-[-0.03em] text-impost-primary tabular-nums md:text-8xl">
+                <div className="mt-10 grid gap-10 border-t border-impost-third/40 pt-8 lg:grid-cols-12">
+                  <p className="text-7xl font-extrabold tracking-[-0.03em] text-impost-primary tabular-nums md:text-8xl lg:col-span-7">
                     12X
                   </p>
-                  <p className="mt-3 text-xl font-bold">ROAS hingga 12X</p>
-                  <p className="mt-2 max-w-xl text-base leading-[1.7] text-impost-ink-dim">
-                    Salah satu campaign yang kami tangani mencapai ROAS hingga
-                    12X.
-                  </p>
-                  <p className="mt-4 text-sm text-impost-ink-dim">
-                    Hasil setiap campaign dapat berbeda.
-                  </p>
+                  <div className="lg:col-span-5 lg:pt-4">
+                    <p className="text-xl font-bold">ROAS hingga 12X</p>
+                    <p className="mt-2 max-w-xl text-base leading-[1.7] text-impost-ink-dim">
+                      Salah satu campaign yang kami tangani mencapai ROAS
+                      hingga 12X.
+                    </p>
+                    <p className="mt-4 text-sm text-impost-ink-dim">
+                      Hasil setiap campaign dapat berbeda.
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             </Chapter>
@@ -209,7 +230,7 @@ export default function KlinikPage() {
                   Yang Klinik Anda Butuhkan, Kami Siapkan.
                 </h2>
               </Reveal>
-              <ul className="mt-10 border-t border-impost-third/25">
+              <ul className="mt-10 grid gap-x-10 border-t border-impost-third/25 md:grid-cols-2">
                 {SERVICES.map((s, i) => (
                   <Reveal as="li" key={s} delay={i * 60}>
                     <div className="flex items-baseline justify-between gap-6 border-b border-impost-third/25 py-5">
@@ -232,6 +253,12 @@ export default function KlinikPage() {
             </Chapter>
           </div>
         </StackChapter>
+
+        {/* BAND — placeholder detail treatment */}
+        <FigureBand
+          src="https://picsum.photos/seed/impost-klinik-detail/1600/800"
+          alt="Placeholder detail peralatan treatment modern"
+        />
 
         {/* 06 — CTA AKHIR */}
         <section>
