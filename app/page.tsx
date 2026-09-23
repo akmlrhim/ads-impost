@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Reveal } from "./components";
+import { Kinetic } from "./motion-ux";
 
 export const metadata: Metadata = {
   title: "Impost — Pilih Vertical",
@@ -15,7 +16,7 @@ export default function RootPage() {
             Impost
           </p>
           <h1 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-[-0.03em] leading-[0.95] text-balance md:text-6xl">
-            Marketing yang punya jalur, bukan sekadar traffic.
+            <Kinetic text="Marketing yang punya jalur, bukan sekadar traffic." />
           </h1>
         </Reveal>
         <div className="mt-12 grid gap-px border border-impost-third/25 bg-impost-third/25 md:grid-cols-2">
