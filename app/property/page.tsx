@@ -43,17 +43,17 @@ export default function PropertyPage() {
       />
 
       <main>
-        {/* 1 - HERO: centered manifesto, no image, no eyebrow */}
-        <section className="border-b border-impost-third/25">
-          <div className="mx-auto w-full max-w-3xl px-5 pt-20 pb-14 text-center md:px-8 md:pt-24 md:pb-16">
+        {/* 1 - HERO: full-height centered manifesto, no image, no eyebrow */}
+        <section className="flex min-h-[100dvh] items-center border-b border-impost-third/25">
+          <div className="mx-auto w-full max-w-4xl px-5 py-20 text-center md:px-8">
             <Reveal>
-              <h1 className="text-4xl font-extrabold tracking-tight text-balance md:text-5xl md:leading-[1.05]">
+              <h1 className="text-4xl font-extrabold tracking-tight text-balance md:text-6xl md:leading-[1.05]">
                 Stop Bakar Budget Marketing Kalau Sales Masih Harus Memulai
                 dari Nol!
               </h1>
             </Reveal>
             <Reveal delay={100}>
-              <p className="mx-auto mt-5 max-w-xl leading-relaxed text-impost-ink-dim">
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-impost-ink-dim">
                 Marketing yang benar tidak hanya mendatangkan traffic, tapi
                 menyaringnya menjadi hot buyer. Kami membantu developer
                 membangun sistem otomatis yang menarik perhatian, mengedukasi,

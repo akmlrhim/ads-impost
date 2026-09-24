@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   title: "Impost - Marketing Klinik & Property Punya Jalur",
   description:
     "Impost membantu klinik dan developer property membangun jalur dari perhatian menjadi reservasi dan inquiry.",
+  openGraph: {
+    title: "Impost - Marketing Klinik & Property Punya Jalur",
+    description:
+      "Impost membantu klinik dan developer property membangun jalur dari perhatian menjadi reservasi dan inquiry.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 export default function RootLayout({

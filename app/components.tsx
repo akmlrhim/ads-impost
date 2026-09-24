@@ -6,12 +6,13 @@ import {
   animate,
   motion,
   useInView,
+  useMotionValueEvent,
   useMotionValue,
   useReducedMotion,
   useScroll,
   useTransform,
 } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Single icon family for the project (Phosphor). Client boundary lives here
 // so server pages never import the icon package directly.
@@ -60,7 +61,11 @@ export function Reveal({
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, delay: delay / 1000, ease: [0.16, 1, 0.3, 1] }}
+      transition={{
+        duration: 0.6,
+        delay: delay / 1000,
+        ease: [0.16, 1, 0.3, 1],
+      }}
     >
       {children}
     </M>
@@ -136,10 +141,7 @@ export function CountUp({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const mv = useMotionValue(reduce ? value : 0);
-  const text = useTransform(
-    mv,
-    (v) => `${prefix}${Math.round(v)}${suffix}`,
-  );
+  const text = useTransform(mv, (v) => `${prefix}${Math.round(v)}${suffix}`);
 
   useEffect(() => {
     if (reduce || !inView) return;
@@ -222,7 +224,7 @@ export function Section({
         muted ? "bg-impost-fourth/25" : ""
       } ${className}`}
     >
-      <div className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8 md:py-20">
+      <div className="mx-auto w-full max-w-6xl px-6 py-16 md:px-8 md:py-24">
         {children}
       </div>
     </section>
@@ -241,7 +243,7 @@ export function SectionHeading({
   const pos = align === "center" ? "mx-auto text-center" : "text-left";
   return (
     <Reveal className={`max-w-2xl ${pos}`}>
-      <h2 className="text-3xl font-extrabold tracking-tight text-balance md:text-4xl">
+      <h2 className="text-4xl font-extrabold tracking-tight text-balance md:text-5xl">
         {title}
       </h2>
       {desc ? (
@@ -270,35 +272,50 @@ export function SiteHeader({
     tone === "gold"
       ? "bg-impost-primary hover:bg-impost-primary-dark text-[#040404]"
       : "bg-impost-secondary hover:bg-impost-primary-dark text-[#040404]";
+  // Sticky in-flow header (not fixed). Transparent over the full-height hero,
+  // solid background once scrolled. Scroll state via Motion, no raw listener.
+  const { scrollY } = useScroll();
+  const [scrolled, setScrolled] = useState(false);
+  useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 24));
   return (
-    <header className="sticky top-0 z-40 border-b border-impost-third/25 bg-impost-fifth/95 backdrop-blur">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
-        <Link href="/" className="flex items-baseline gap-2">
-          <span className="text-base font-extrabold tracking-[0.18em] uppercase">
-            Impost
-          </span>
-          <span className="hidden text-sm text-impost-ink-dim sm:inline">
-            {vertical}
-          </span>
+    <header
+      className={`sticky top-0 z-40 -mb-20 transition-colors ${
+        scrolled
+          ? "border-b border-impost-third/25 bg-impost-fifth/80 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      {" "}
+      <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
+        <Link href="/" aria-label="Impost - beranda">
+          <img
+            src="/logo_original.webp"
+            alt="Impost"
+            width={949}
+            height={718}
+            className="h-12 w-auto"
+          />
         </Link>
-        {links.length > 0 ? (
-          <nav
-            aria-label="Navigasi utama"
-            className="hidden items-center gap-6 text-sm font-semibold text-impost-ink-dim lg:flex"
+        <div className="ml-auto flex items-center gap-6">
+          {links.length > 0 ? (
+            <nav
+              aria-label="Navigasi utama"
+              className="hidden items-center gap-6 text-sm font-semibold text-impost-ink-dim lg:flex"
+            >
+              {links.map((l) => (
+                <a key={l.href} href={l.href} className="hover:text-impost-ink">
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+          ) : null}
+          <a
+            href={ctaHref}
+            className={`rounded-full px-5 py-2.5 text-sm font-bold whitespace-nowrap ${btn}`}
           >
-            {links.map((l) => (
-              <a key={l.href} href={l.href} className="hover:text-impost-ink">
-                {l.label}
-              </a>
-            ))}
-          </nav>
-        ) : null}
-        <a
-          href={ctaHref}
-          className={`rounded-full px-5 py-2.5 text-sm font-bold whitespace-nowrap ${btn}`}
-        >
-          {ctaLabel}
-        </a>
+            {ctaLabel}
+          </a>
+        </div>
       </div>
     </header>
   );
@@ -385,9 +402,13 @@ export function SiteFooter({
     <footer className="bg-impost-fifth">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-12 md:grid-cols-12 md:px-8">
         <div className="md:col-span-5">
-          <p className="text-base font-extrabold tracking-[0.18em] uppercase">
-            Impost
-          </p>
+          <img
+            src="/logo_original.webp"
+            alt="Impost"
+            width={949}
+            height={718}
+            className="h-10 w-auto"
+          />
           <p className="mt-2 text-sm text-impost-ink-dim">
             Performance marketing untuk {vertical}.
           </p>
