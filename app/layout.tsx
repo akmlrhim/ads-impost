@@ -10,7 +10,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Impost — Marketing Klinik & Property Punya Jalur",
+  title: "Impost - Marketing Klinik & Property Punya Jalur",
   description:
     "Impost membantu klinik dan developer property membangun jalur dari perhatian menjadi reservasi dan inquiry.",
 };

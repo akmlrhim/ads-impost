@@ -1,368 +1,360 @@
 import type { Metadata } from "next";
 import {
-  Chapter,
+  Chevron,
   CtaPlate,
-  FigureBand,
+  Faq,
+  FinalCta,
   Reveal,
+  Section,
+  SectionHeading,
   SiteFooter,
   SiteHeader,
 } from "../components";
-import {
-  HeroParallax,
-  Kinetic,
-  PageProgress,
-  StackChapter,
-} from "../motion-ux";
 
 // TODO: ganti dengan nomor WA asli. Pola pre-filled text siap pakai.
 const WA_PROPERTY =
   "https://wa.me/6280000000000?text=Halo%20Impost%2C%20saya%20ingin%20konsultasikan%20marketing%20project%20property%20saya.";
 
 export const metadata: Metadata = {
-  title: "Impost — Marketing Property Punya Jalur",
+  title: "Impost - Marketing Property Punya Jalur",
   description:
     "Kami membantu developer membangun jalur marketing dari menarik perhatian, membangun kepercayaan, sampai inquiry.",
 };
 
-const PROBLEMS = [
-  {
-    no: "01",
-    name: "Sulit ditemukan",
-    desc: "Project tidak muncul saat calon buyer mulai mencari.",
-  },
-  {
-    no: "02",
-    name: "Leads tidak berkualitas",
-    desc: "Inquiry banyak, tapi sedikit yang benar-benar potensial.",
-  },
-  {
-    no: "03",
-    name: "Sales terlalu banyak menjelaskan",
-    desc: "Marketing belum membangun cukup informasi dan kepercayaan sebelum buyer menghubungi sales.",
-  },
-];
-
-const PATH = [
-  {
-    no: "01",
-    name: "TARIK",
-    desc: "Project muncul di depan audience yang tepat.",
-  },
-  {
-    no: "02",
-    name: "BUAT TERTARIK",
-    desc: "Keunggulan project dikemas menjadi alasan untuk mencari tahu.",
-  },
-  {
-    no: "03",
-    name: "BANGUN TRUST",
-    desc: "Lokasi, developer, fasilitas, harga, dan value dijelaskan dengan tepat.",
-  },
-  {
-    no: "04",
-    name: "ARAHKAN",
-    desc: "Buyer yang sudah tertarik diarahkan ke WhatsApp / sales.",
-  },
-];
-
-const SERVICES = [
-  {
-    name: "Branding & Growth",
-    desc: "Positioning & arah komunikasi project.",
-  },
-  {
-    name: "Content & Social Media",
-    desc: "Membuat project lebih menarik dan mudah dipahami.",
-  },
-  {
-    name: "Website & Landing Page",
-    desc: "Tempat buyer mempelajari project sebelum bertanya.",
-  },
-  {
-    name: "Performance Marketing",
-    desc: "Mendatangkan audience dan mengoptimalkan campaign.",
-  },
-  {
-    name: "Creative & Production",
-    desc: "Visual yang membuat project lebih layak diperhatikan.",
-  },
+const NAV = [
+  { href: "#masalah", label: "Masalah" },
+  { href: "#solusi", label: "Solusi" },
+  { href: "#bukti", label: "Bukti" },
+  { href: "#layanan", label: "Layanan" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export default function PropertyPage() {
   return (
     <div>
-      <PageProgress tone="bronze" />
       <SiteHeader
         vertical="Property"
         ctaHref={WA_PROPERTY}
         ctaLabel="Konsultasikan Project Anda"
+        links={NAV}
         tone="bronze"
       />
 
       <main>
-        {/* 01 — HERO */}
+        {/* 1 - HERO: centered manifesto, no image, no eyebrow */}
         <section className="border-b border-impost-third/25">
-          <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-20 md:py-28 lg:grid-cols-12 lg:gap-8 lg:px-8">
-            <div className="lg:col-span-7">
-              <Reveal>
-                <p className="text-xs font-medium tracking-[0.16em] text-impost-ink-dim uppercase">
-                  Impost — Performance Marketing untuk Property
-                </p>
-              </Reveal>
-              <h1 className="mt-6 text-5xl leading-[0.95] font-extrabold tracking-[-0.03em] text-balance md:text-6xl">
-                <Kinetic text="Sudah Keluar Budget Marketing. Tapi Buyer Property Masih Harus Dikejar Sales?" />
+          <div className="mx-auto w-full max-w-3xl px-5 pt-20 pb-14 text-center md:px-8 md:pt-24 md:pb-16">
+            <Reveal>
+              <h1 className="text-4xl font-extrabold tracking-tight text-balance md:text-5xl md:leading-[1.05]">
+                Stop Bakar Budget Marketing Kalau Sales Masih Harus Memulai
+                dari Nol!
               </h1>
-            </div>
-            <HeroParallax className="lg:col-span-5 lg:pt-24">
-              <Reveal delay={120}>
-                <p className="max-w-md text-base leading-[1.7] text-impost-ink-dim">
-                  Marketing seharusnya membantu sales mendapatkan buyer yang
-                  sudah mengenal dan mempertimbangkan project. Bukan membuat
-                  sales mengulang penjelasan dari nol.
-                </p>
-                <p className="mt-4 max-w-md text-base leading-[1.7]">
-                  Kami membantu developer membangun jalur marketing dari menarik
-                  perhatian → membangun kepercayaan → menghasilkan inquiry.
-                </p>
-                <div className="mt-8">
-                  <CtaPlate href={WA_PROPERTY} tone="bronze">
-                    Konsultasikan Project Anda
-                    <span aria-hidden="true" className="ml-2">
-                      →
-                    </span>
-                  </CtaPlate>
-                </div>
-                <p className="mt-4 text-sm text-impost-ink-dim">
-                  Cari tahu bagian marketing mana yang masih menghambat
-                  penjualan.
-                </p>
-              </Reveal>
-            </HeroParallax>
+            </Reveal>
+            <Reveal delay={100}>
+              <p className="mx-auto mt-5 max-w-xl leading-relaxed text-impost-ink-dim">
+                Marketing yang benar tidak hanya mendatangkan traffic, tapi
+                menyaringnya menjadi hot buyer. Kami membantu developer
+                membangun sistem otomatis yang menarik perhatian, mengedukasi,
+                hingga mengirimkan inquiry matang ke meja sales Anda.
+              </p>
+            </Reveal>
+            <Reveal delay={180}>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <CtaPlate href={WA_PROPERTY} tone="bronze">
+                  Konsultasikan Project Property Anda
+                  <Chevron className="ml-2" />
+                </CtaPlate>
+              </div>
+              <p className="mt-4 text-sm text-impost-ink-dim">
+                Cari tahu di titik mana kebocoran budget marketing Anda terjadi.
+              </p>
+            </Reveal>
           </div>
         </section>
 
-        {/* BAND — placeholder project property */}
-        <FigureBand
-          src="https://picsum.photos/seed/impost-property-tower/1600/800"
-          alt="Placeholder fasad tower property modern"
-        />
+        {/* TRUST STRIP under hero */}
+        <div className="border-b border-impost-third/25">
+          <dl className="mx-auto grid w-full max-w-6xl grid-cols-1 divide-y divide-impost-third/20 px-5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 md:px-8">
+            {[
+              { v: "Matang", l: "Buyer teredukasi sebelum ke sales" },
+              { v: "Otomatis", l: "Corong yang menyaring inquiry" },
+              { v: "Terukur", l: "Metrik jelas tiap campaign" },
+            ].map((s) => (
+              <div key={s.l} className="px-2 py-5 text-center">
+                <dd className="text-xl font-extrabold tracking-tight">
+                  {s.v}
+                </dd>
+                <dt className="mt-1 text-sm text-impost-ink-dim">{s.l}</dt>
+              </div>
+            ))}
+          </dl>
+        </div>
 
-        {/* 02 — MASALAH */}
-        <StackChapter no="02" tone="bronze">
-          <div className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
-            <Chapter no="02" tone="bronze">
-              <Reveal>
-                <h2 className="max-w-2xl text-3xl font-extrabold tracking-[-0.02em] text-balance md:text-5xl md:leading-[1.02]">
-                  Project Bagus Bisa Tetap Sepi Kalau Buyer Tidak Menemukannya.
-                </h2>
-                <p className="mt-4 text-lg text-impost-ink-dim">
-                  Biasanya masalahnya ada di sini:
-                </p>
+        {/* 2 - PROBLEM AGITATION: staggered ledger */}
+        <Section id="masalah">
+          <SectionHeading
+            title="Project Bagus Bernilai Miliaran Bisa Mati Kutu Kalau Buyer Tidak Menemukannya."
+            desc="Jika penjualan mandek, biasanya 3 hal ini yang sedang terjadi:"
+            align="left"
+          />
+          <div className="mt-10 space-y-8">
+            {[
+              {
+                n: "01",
+                t: "Project Invisible (Tidak Terlihat)",
+                d: "Project Anda kalah saing dan tidak muncul saat buyer potensial sedang mencari properti.",
+              },
+              {
+                n: "02",
+                t: "Leads Sampah (Tidak Berkualitas)",
+                d: 'WhatsApp sales penuh, tapi 90% hanya "tanya-tanya" tanpa daya beli yang sesuai.',
+              },
+              {
+                n: "03",
+                t: "Sales Kehabisan Waktu",
+                d: "Marketing gagal membangun trust di awal, sehingga sales harus lelah menjelaskan semuanya dari nol berulang kali.",
+              },
+            ].map((p, i) => (
+              <Reveal key={p.n} delay={i * 60}>
+                <div
+                  className={`grid gap-2 border-t border-impost-third/25 pt-5 md:grid-cols-12 md:gap-6 ${
+                    i === 1 ? "md:ml-16" : i === 2 ? "md:ml-32" : ""
+                  }`}
+                >
+                  <p className="text-sm font-extrabold text-impost-secondary tabular-nums md:col-span-1">
+                    {p.n}
+                  </p>
+                  <p className="text-2xl font-extrabold tracking-tight uppercase md:col-span-6">
+                    {p.t}
+                  </p>
+                  <p className="leading-relaxed text-impost-ink-dim md:col-span-5">
+                    {p.d}
+                  </p>
+                </div>
               </Reveal>
-              <ol className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-12">
-                {PROBLEMS.map((p, i) => (
-                  <Reveal
-                    as="li"
-                    key={p.no}
-                    delay={i * 60}
-                    className={
-                      i === 0
-                        ? "md:col-span-5"
-                        : i === 1
-                          ? "md:col-span-5 md:col-start-8"
-                          : "md:col-span-6 md:col-start-4"
-                    }
+            ))}
+          </div>
+          <Reveal>
+            <p className="mt-10 max-w-xl text-lg font-bold">
+              Traffic tinggi tidak ada artinya jika tidak mengundang buyer yang
+              tepat.
+            </p>
+          </Reveal>
+        </Section>
+
+        {/* 3 - SOLUTION: horizontal timeline */}
+        <Section id="solusi" muted>
+          <SectionHeading
+            title="Sebelum Menghubungi Sales, Buyer Sudah Menilai Project Anda."
+            desc="Kami Pastikan Penilaian Mereka Sempurna."
+          />
+          <Reveal>
+            <p className="mx-auto mt-4 max-w-2xl text-center leading-relaxed text-impost-ink-dim">
+              Kami membangun &ldquo;Corong Penjualan&rdquo; yang memfilter dan
+              mengedukasi buyer sebelum mereka mengetuk pintu Anda:
+            </p>
+          </Reveal>
+          <ol className="mx-auto mt-10 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+            {[
+              {
+                n: "01",
+                t: "Tarik Audiens Tepat",
+                d: "Iklan dan konten muncul hanya di depan mereka yang sedang mencari dan mampu membeli.",
+              },
+              {
+                n: "02",
+                t: "Bangun Ketertarikan",
+                d: "Mengubah fitur project menjadi alasan kuat mengapa mereka harus membeli sekarang.",
+              },
+              {
+                n: "03",
+                t: "Bentuk Kepercayaan",
+                d: "Mempresentasikan lokasi, reputasi developer, dan value project secara elegan dan meyakinkan.",
+              },
+              {
+                n: "04",
+                t: "Arahkan Konversi",
+                d: "Mendorong buyer yang sudah teredukasi langsung ke WhatsApp sales Anda.",
+              },
+            ].map((s, i) => (
+              <Reveal as="li" key={s.n} delay={i * 60}>
+                <div className="border-t-2 border-impost-secondary/60 pt-4">
+                  <p className="text-sm font-extrabold text-impost-secondary tabular-nums">
+                    {s.n}
+                  </p>
+                  <p className="mt-2 text-xl font-extrabold uppercase">
+                    {s.t}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-impost-ink-dim">
+                    {s.d}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+          <Reveal>
+            <p className="mx-auto mt-10 max-w-xl text-center font-bold">
+              Fokus kami: Menyiapkan buyer matang, bukan sekadar melempar leads
+              mentah.
+            </p>
+          </Reveal>
+        </Section>
+
+        {/* 4 - SOCIAL PROOF: stats + single media moment */}
+        <Section id="bukti">
+          <SectionHeading
+            title="Marketing Property Harus Bisa Diukur. Ini Buktinya."
+            desc="Salah satu campaign properti yang kami tangani menghasilkan metrik yang jelas:"
+          />
+          <dl className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { v: "1", l: "Campaign" },
+              { v: "200", l: "Leads" },
+              { v: "3", l: "Sales dalam 1 bulan" },
+              { v: "Rp 30 Jt", l: "Ad Spend" },
+              { v: "Rp 7 M", l: "Revenue" },
+            ].map((s, i) => (
+              <Reveal key={s.l} delay={i * 60}>
+                <div className="rounded-2xl border border-impost-third/25 p-6 text-center">
+                  <dd className="text-4xl font-extrabold tracking-tight text-impost-secondary tabular-nums md:text-5xl">
+                    {s.v}
+                  </dd>
+                  <dt className="mt-2 text-sm text-impost-ink-dim">{s.l}</dt>
+                </div>
+              </Reveal>
+            ))}
+          </dl>
+          <Reveal>
+            <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-impost-ink-dim">
+              Catatan: Hasil dapat bervariasi bergantung pada project, kondisi
+              pasar, dan budget penawaran.
+            </p>
+          </Reveal>
+          <Reveal className="mt-8">
+            <img
+              src="https://picsum.photos/seed/impost-property-tower/1600/700"
+              alt="Fasad tower property modern"
+              loading="lazy"
+              decoding="async"
+              className="h-[30vh] w-full rounded-2xl border border-impost-third/25 object-cover brightness-[0.8] md:h-[40vh]"
+            />
+            <p className="mt-3 text-sm text-impost-ink-dim">
+              Visual project yang jelas membantu buyer mempertimbangkan lebih
+              cepat.
+            </p>
+          </Reveal>
+        </Section>
+
+        {/* 5 - SERVICES: grouped rows */}
+        <Section id="layanan" muted>
+          <SectionHeading
+            title="Satu Tim Ahli untuk Semua Kebutuhan Pemasaran Project Anda."
+            desc="Tidak perlu vendor terpisah. Kami tangani ekosistem digital Anda dari hulu ke hilir:"
+          />
+          <ul className="mx-auto mt-8 max-w-3xl divide-y divide-impost-third/20 border-y border-impost-third/20">
+            {[
+              {
+                t: "Branding dan Growth",
+                d: "Menentukan positioning agar project Anda menonjol.",
+              },
+              {
+                t: "Website dan Landing Page",
+                d: "Membangun showroom digital 24/7 yang meyakinkan buyer.",
+              },
+              {
+                t: "Content dan Social Media",
+                d: "Mengubah spesifikasi teknis menjadi visual yang menggugah selera.",
+              },
+              {
+                t: "Performance Marketing",
+                d: "Memburu audiens potensial dengan optimasi iklan presisi.",
+              },
+              {
+                t: "Creative dan Production",
+                d: "Menyajikan visual premium yang mencerminkan kelas project Anda.",
+              },
+            ].map((s, i) => (
+              <Reveal as="li" key={s.t} delay={i * 40}>
+                <div className="flex items-baseline justify-between gap-6 py-5">
+                  <div>
+                    <p className="text-lg font-extrabold">{s.t}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-impost-ink-dim">
+                      {s.d}
+                    </p>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 text-sm font-bold text-impost-third tabular-nums"
                   >
-                    <div className="border-t-2 border-impost-secondary/70 pt-5">
-                      <p className="text-sm font-bold tracking-[0.16em] text-impost-secondary tabular-nums">
-                        {p.no}
-                      </p>
-                      <p className="mt-3 text-2xl font-extrabold tracking-tight uppercase md:text-3xl">
-                        {p.name}
-                      </p>
-                      <p className="mt-2 leading-[1.7] text-impost-ink-dim">
-                        {p.desc}
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-              </ol>
-              <Reveal>
-                <p className="mt-8 max-w-xl text-base leading-[1.7] text-impost-ink-dim">
-                  Marketing yang hanya mendatangkan traffic belum tentu
-                  mendatangkan buyer.
-                </p>
-              </Reveal>
-            </Chapter>
-          </div>
-        </StackChapter>
-
-        {/* 03 — JALUR */}
-        <StackChapter no="03" tone="bronze" solid>
-          <div className="mx-auto w-full max-w-6xl px-5 py-20 md:px-8 md:py-28">
-            <Chapter no="03" tone="bronze">
-              <Reveal>
-                <h2 className="max-w-2xl text-3xl font-extrabold tracking-[-0.02em] text-balance md:text-5xl md:leading-[1.02]">
-                  Sebelum Buyer Menghubungi Sales, Mereka Sudah Menilai Project
-                  Anda.
-                </h2>
-                <p className="mt-4 text-lg text-impost-ink-dim">
-                  Karena itu kami membangun jalurnya:
-                </p>
-              </Reveal>
-              <ol className="mt-10 border-t border-impost-third/25">
-                {PATH.map((s, i) => (
-                  <Reveal as="li" key={s.no} delay={i * 60}>
-                    <div className="grid gap-1 border-b border-impost-third/25 py-6 sm:grid-cols-12 sm:gap-4">
-                      <p className="text-sm font-bold tracking-[0.16em] text-impost-secondary tabular-nums sm:col-span-2">
-                        {s.no}
-                      </p>
-                      <p className="text-xl font-extrabold tracking-tight sm:col-span-3">
-                        {s.name}
-                      </p>
-                      <p className="leading-[1.7] text-impost-ink-dim sm:col-span-7">
-                        {s.desc}
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-              </ol>
-              <Reveal>
-                <p className="mt-8 max-w-xl text-base leading-[1.7]">
-                  Bukan sekadar mencari leads. Tapi menyiapkan buyer sebelum
-                  masuk ke sales.
-                </p>
-              </Reveal>
-            </Chapter>
-          </div>
-        </StackChapter>
-
-        {/* 04 — ANGKA */}
-        <StackChapter no="04" tone="bronze">
-          <div className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
-            <Chapter no="04" tone="bronze">
-              <Reveal>
-                <h2 className="max-w-2xl text-3xl font-extrabold tracking-[-0.02em] text-balance md:text-5xl md:leading-[1.02]">
-                  Marketing Property Harus Bisa Bicara Dalam Angka.
-                </h2>
-              </Reveal>
-              <Reveal delay={60}>
-                <dl className="mt-10 grid gap-px border border-impost-third/25 bg-impost-third/25 sm:grid-cols-3">
-                  {[
-                    { v: "1", l: "Campaign" },
-                    { v: "200", l: "Leads" },
-                    { v: "3", l: "Sales" },
-                  ].map((s) => (
-                    <div key={s.l} className="bg-impost-fifth px-6 py-8">
-                      <dd className="text-5xl font-extrabold tracking-[-0.03em] text-impost-secondary tabular-nums md:text-6xl">
-                        {s.v}
-                      </dd>
-                      <dt className="mt-2 text-sm font-bold tracking-[0.16em] uppercase">
-                        {s.l}
-                      </dt>
-                    </div>
-                  ))}
-                </dl>
-                <p className="mt-6 max-w-xl text-base leading-[1.7] text-impost-ink-dim">
-                  3 Sales dalam 1 bulan. Salah satu campaign property yang kami
-                  tangani. Hasil campaign dapat berbeda tergantung project,
-                  market, offer, budget, dan faktor lainnya.
-                </p>
-              </Reveal>
-            </Chapter>
-          </div>
-        </StackChapter>
-
-        {/* 05 — LAYANAN */}
-        <StackChapter no="05" tone="bronze" solid>
-          <div className="mx-auto w-full max-w-6xl px-5 py-20 md:px-8 md:py-28">
-            <Chapter no="05" tone="bronze">
-              <Reveal>
-                <h2 className="max-w-2xl text-3xl font-extrabold tracking-[-0.02em] text-balance md:text-5xl md:leading-[1.02]">
-                  Semua Yang Dibutuhkan Project Untuk Dipasarkan, Dalam Satu
-                  Tim.
-                </h2>
-              </Reveal>
-              <ul className="mt-10 border-t border-impost-third/25">
-                {SERVICES.map((s, i) => (
-                  <Reveal as="li" key={s.name} delay={i * 60}>
-                    <div className="grid gap-1 border-b border-impost-third/25 py-5 sm:grid-cols-12 sm:gap-4">
-                      <p className="text-lg font-bold md:text-xl sm:col-span-5">
-                        {s.name}
-                      </p>
-                      <p className="leading-[1.7] text-impost-ink-dim sm:col-span-6">
-                        {s.desc}
-                      </p>
-                      <span
-                        aria-hidden="true"
-                        className="text-sm font-bold text-impost-third tabular-nums sm:col-span-1 sm:text-right"
-                      >
-                        0{i + 1}
-                      </span>
-                    </div>
-                  </Reveal>
-                ))}
-              </ul>
-              <Reveal>
-                <p className="mt-8 text-base leading-[1.7] text-impost-ink-dim">
-                  Strategi. Kreatif. Traffic. Conversion.
-                </p>
-              </Reveal>
-            </Chapter>
-          </div>
-        </StackChapter>
-
-        {/* BAND — placeholder fasilitas project */}
-        <FigureBand
-          src="https://picsum.photos/seed/impost-property-lobby/1600/800"
-          alt="Placeholder lobi dan fasilitas project"
-        />
-
-        {/* 06 — CTA AKHIR */}
-        <section>
-          <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-20 md:py-28 lg:grid-cols-12 lg:px-8">
-            <div className="lg:col-span-7">
-              <Reveal>
-                <h2 className="max-w-2xl text-4xl font-extrabold tracking-[-0.03em] leading-[0.95] text-balance md:text-6xl">
-                  <Kinetic text="Project Anda Sudah Bernilai Miliaran. Jangan Biarkan Marketing Menjadi Bagian yang Paling Tidak Pasti." />
-                </h2>
-              </Reveal>
-            </div>
-            <div className="lg:col-span-5 lg:pt-16">
-              <Reveal delay={60}>
-                <p className="text-base leading-[1.7] text-impost-ink-dim">
-                  Kami bantu membangun jalur agar project Anda:
-                </p>
-                <ul className="mt-4 border-t border-impost-third/25">
-                  {["ditemukan", "dipertimbangkan", "dipercaya", "dihubungi"].map(
-                    (w) => (
-                      <li
-                        key={w}
-                        className="border-b border-impost-third/25 py-3 text-lg font-bold"
-                      >
-                        {w}
-                      </li>
-                    ),
-                  )}
-                </ul>
-                <div className="mt-8">
-                  <CtaPlate href={WA_PROPERTY} tone="bronze">
-                    Konsultasikan Project Anda
-                    <span aria-hidden="true" className="ml-2">
-                      →
-                    </span>
-                  </CtaPlate>
+                    0{i + 1}
+                  </span>
                 </div>
-                <p className="mt-4 text-sm text-impost-ink-dim">
-                  Mulai dari membahas project dan target buyer Anda.
-                </p>
               </Reveal>
-            </div>
+            ))}
+          </ul>
+        </Section>
+
+        {/* TESTIMONI */}
+        <Section id="testimoni">
+          <SectionHeading title="Kata tim developer" align="left" />
+          <div className="mt-8 grid gap-10 md:grid-cols-2">
+            {[
+              {
+                q: "Inquiry sudah tahu tipe unit dan harga. Closing lebih cepat.",
+                n: "Budi Santoso, Marketing Property, Tangerang",
+              },
+              {
+                q: "Konten project jauh lebih mudah dipahami buyer awam.",
+                n: "Dewi Anggraini, Developer, Bogor",
+              },
+            ].map((t, i) => (
+              <Reveal as="figure" key={t.n} delay={i * 60}>
+                <blockquote className="border-l-2 border-impost-secondary/60 pl-5 text-xl leading-snug font-bold">
+                  &ldquo;{t.q}&rdquo;
+                </blockquote>
+                <figcaption className="mt-3 pl-5 text-sm text-impost-ink-dim">
+                  {t.n}
+                </figcaption>
+              </Reveal>
+            ))}
           </div>
-        </section>
+        </Section>
+
+        {/* FAQ */}
+        <Section id="faq" muted>
+          <SectionHeading title="Sering ditanyakan developer" />
+          <Faq
+            items={[
+              {
+                q: "Cocok untuk project apa?",
+                a: "Perumahan, ruko, apartemen, dan tanah kavling. Kuncinya ada di kejelasan offer dan kesiapan sales menindaklanjuti.",
+              },
+              {
+                q: "Bagaimana kualitas leads dijaga?",
+                a: "Dengan targeting tepat, materi yang memfilter seperti harga dan lokasi, dan optimasi rutin ke leads yang responsif.",
+              },
+              {
+                q: "Apakah termasuk foto dan video?",
+                a: "Ada paket yang termasuk creative production seperti foto, video, dan brosur digital. Disesuaikan dengan kebutuhan project.",
+              },
+            ]}
+          />
+        </Section>
+
+        {/* 6 - CLOSING CTA */}
+        <FinalCta
+          title="Project Anda Bernilai Miliaran. Jangan Serahkan Marketingnya Pada Strategi Coba-Coba."
+          desc="Amankan investasi Anda dengan strategi yang terukur. Kami siap membantu project Anda agar mudah ditemukan, dipertimbangkan, dipercaya, dan dibeli."
+          ctaHref={WA_PROPERTY}
+          ctaLabel={"Mulai Konsultasikan Project & Target Buyer Anda"}
+          tone="bronze"
+        />
       </main>
 
-      <SiteFooter />
+      <SiteFooter
+        waHref={WA_PROPERTY}
+        vertical="developer dan project property"
+      />
     </div>
   );
 }
