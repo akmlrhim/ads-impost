@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import {
   Chevron,
+  CountUp,
   CtaPlate,
+  ParallaxBand,
   Faq,
   FinalCta,
   Reveal,
@@ -190,29 +192,21 @@ export default function RootPage() {
             title="Angka yang jadi patokan"
             desc="Contoh hasil klien. Hasil tiap campaign dapat berbeda."
           />
-          <Reveal className="mt-8">
-            <img
-              src="https://picsum.photos/seed/impost-umkm-kerja/1600/700"
-              alt="Suasana tim menyiapkan materi campaign"
-              loading="lazy"
-              decoding="async"
-              className="h-[30vh] w-full rounded-2xl border border-impost-third/25 object-cover brightness-[0.8] md:h-[40vh]"
-            />
-            <p className="mt-3 text-sm text-impost-ink-dim">
-              Materi campaign disiapkan per vertikal, lalu diuji ke audience
-              yang tepat.
-            </p>
-          </Reveal>
+          <ParallaxBand
+            src="https://picsum.photos/seed/impost-umkm-kerja/1600/700"
+            alt="Suasana tim menyiapkan materi campaign"
+            caption="Materi campaign disiapkan per vertikal, lalu diuji ke audience yang tepat."
+          />
           <dl className="mt-6 grid gap-4 sm:grid-cols-3">
             {[
-              { v: "12X", l: "ROAS terbaik campaign klinik" },
-              { v: "200", l: "Leads satu campaign property" },
-              { v: "3", l: "Sales property dalam sebulan" },
+              { v: 12, suffix: "X", l: "ROAS terbaik campaign klinik" },
+              { v: 200, suffix: "", l: "Leads satu campaign property" },
+              { v: 3, suffix: "", l: "Sales property dalam sebulan" },
             ].map((s, i) => (
               <Reveal key={s.l} delay={i * 60}>
                 <div className="rounded-2xl border border-impost-third/25 p-6 text-center">
                   <dd className="text-4xl font-extrabold tracking-tight text-impost-primary tabular-nums md:text-5xl">
-                    {s.v}
+                    <CountUp value={s.v} suffix={s.suffix} />
                   </dd>
                   <dt className="mt-2 text-sm text-impost-ink-dim">{s.l}</dt>
                 </div>

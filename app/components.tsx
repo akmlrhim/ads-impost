@@ -2,7 +2,16 @@
 
 import Link from "next/link";
 import { CaretRight, WhatsappLogo } from "@phosphor-icons/react";
-import { motion, useReducedMotion } from "motion/react";
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
+import { useEffect, useRef } from "react";
 
 // Single icon family for the project (Phosphor). Client boundary lives here
 // so server pages never import the icon package directly.
@@ -55,6 +64,105 @@ export function Reveal({
     >
       {children}
     </M>
+  );
+}
+
+// Scroll-linked parallax for media bands. Transform only, static when reduced.
+export function ParallaxBand({
+  src,
+  alt,
+  caption,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+  className?: string;
+}) {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  return (
+    <Reveal className={`mt-8 ${className}`}>
+      <div
+        ref={ref}
+        className="overflow-hidden rounded-2xl border border-impost-third/25"
+      >
+        {reduce ? (
+          <img
+            src={src}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            className="h-[30vh] w-full object-cover brightness-[0.8] md:h-[40vh]"
+          />
+        ) : (
+          <motion.img
+            src={src}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            style={{ y }}
+            className="h-[30vh] w-full scale-[1.18] object-cover brightness-[0.8] will-change-transform md:h-[40vh]"
+          />
+        )}
+      </div>
+      {caption ? (
+        <p className="mt-3 text-sm text-impost-ink-dim">{caption}</p>
+      ) : null}
+    </Reveal>
+  );
+}
+
+// Count-up stat. Animates once on entry, snaps to final when reduced.
+export function CountUp({
+  value,
+  prefix = "",
+  suffix = "",
+  duration = 1.4,
+  className = "",
+}: {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  duration?: number;
+  className?: string;
+}) {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const mv = useMotionValue(reduce ? value : 0);
+  const text = useTransform(
+    mv,
+    (v) => `${prefix}${Math.round(v)}${suffix}`,
+  );
+
+  useEffect(() => {
+    if (reduce || !inView) return;
+    const controls = animate(mv, value, {
+      duration,
+      ease: [0.16, 1, 0.3, 1],
+    });
+    return () => controls.stop();
+  }, [inView, reduce, mv, value, duration]);
+
+  if (reduce) {
+    return (
+      <span ref={ref} className={className}>
+        {prefix}
+        {value}
+        {suffix}
+      </span>
+    );
+  }
+  return (
+    <motion.span ref={ref} className={className}>
+      {text}
+    </motion.span>
   );
 }
 

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import {
   Chevron,
+  CountUp,
   CtaPlate,
   Faq,
   FinalCta,
+  ParallaxBand,
   Reveal,
   Section,
   SectionHeading,
@@ -208,16 +210,20 @@ export default function PropertyPage() {
           />
           <dl className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { v: "1", l: "Campaign" },
-              { v: "200", l: "Leads" },
-              { v: "3", l: "Sales dalam 1 bulan" },
-              { v: "Rp 30 Jt", l: "Ad Spend" },
-              { v: "Rp 7 M", l: "Revenue" },
+              { v: 1, prefix: "", suffix: "", l: "Campaign" },
+              { v: 200, prefix: "", suffix: "", l: "Leads" },
+              { v: 3, prefix: "", suffix: "", l: "Sales dalam 1 bulan" },
+              { v: 30, prefix: "Rp ", suffix: " Jt", l: "Ad Spend" },
+              { v: 7, prefix: "Rp ", suffix: " M", l: "Revenue" },
             ].map((s, i) => (
               <Reveal key={s.l} delay={i * 60}>
                 <div className="rounded-2xl border border-impost-third/25 p-6 text-center">
                   <dd className="text-4xl font-extrabold tracking-tight text-impost-secondary tabular-nums md:text-5xl">
-                    {s.v}
+                    <CountUp
+                      value={s.v}
+                      prefix={s.prefix}
+                      suffix={s.suffix}
+                    />
                   </dd>
                   <dt className="mt-2 text-sm text-impost-ink-dim">{s.l}</dt>
                 </div>
@@ -230,19 +236,11 @@ export default function PropertyPage() {
               pasar, dan budget penawaran.
             </p>
           </Reveal>
-          <Reveal className="mt-8">
-            <img
-              src="https://picsum.photos/seed/impost-property-tower/1600/700"
-              alt="Fasad tower property modern"
-              loading="lazy"
-              decoding="async"
-              className="h-[30vh] w-full rounded-2xl border border-impost-third/25 object-cover brightness-[0.8] md:h-[40vh]"
-            />
-            <p className="mt-3 text-sm text-impost-ink-dim">
-              Visual project yang jelas membantu buyer mempertimbangkan lebih
-              cepat.
-            </p>
-          </Reveal>
+          <ParallaxBand
+            src="https://picsum.photos/seed/impost-property-tower/1600/700"
+            alt="Fasad tower property modern"
+            caption="Visual project yang jelas membantu buyer mempertimbangkan lebih cepat."
+          />
         </Section>
 
         {/* 5 - SERVICES: grouped rows */}

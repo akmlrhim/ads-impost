@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import {
   Chevron,
+  CountUp,
   CtaPlate,
   Faq,
   FinalCta,
+  ParallaxBand,
   Reveal,
   Section,
   SectionHeading,
@@ -205,7 +207,7 @@ export default function KlinikPage() {
                 Pencapaian Kami
               </p>
               <p className="mt-3 text-5xl font-extrabold tracking-tight text-impost-primary tabular-nums md:text-7xl">
-                12X
+                <CountUp value={12} suffix="X" duration={1.6} />
               </p>
               <p className="mt-3 text-xl font-extrabold">
                 ROAS Hingga 12X Lipat
@@ -217,18 +219,11 @@ export default function KlinikPage() {
               </p>
             </div>
           </Reveal>
-          <Reveal className="mt-8">
-            <img
-              src="https://picsum.photos/seed/impost-klinik-room/1600/700"
-              alt="Suasana ruang treatment klinik yang rapi"
-              loading="lazy"
-              decoding="async"
-              className="h-[30vh] w-full rounded-2xl border border-impost-third/25 object-cover brightness-[0.8] md:h-[40vh]"
-            />
-            <p className="mt-3 text-sm text-impost-ink-dim">
-              Ruang treatment yang rapi membantu pasien percaya sebelum datang.
-            </p>
-          </Reveal>
+          <ParallaxBand
+            src="https://picsum.photos/seed/impost-klinik-room/1600/700"
+            alt="Suasana ruang treatment klinik yang rapi"
+            caption="Ruang treatment yang rapi membantu pasien percaya sebelum datang."
+          />
         </Section>
 
         {/* 5 - SERVICES: grouped rows */}
