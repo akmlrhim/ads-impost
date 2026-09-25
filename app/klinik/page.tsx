@@ -101,17 +101,17 @@ export default function KlinikPage() {
           <div className="mt-10 space-y-8">
             {[
               {
-                n: "01",
+                n: "1",
                 t: "Posting Setiap Hari",
                 d: "Tapi yang datang bukan pasien berkualitas, hanya penonton.",
               },
               {
-                n: "02",
+                n: "2",
                 t: "Punya Banyak Treatment",
                 d: 'Tapi tidak ada satupun yang menonjol sebagai "Magnet Pasien".',
               },
               {
-                n: "03",
+                n: "3",
                 t: "Iklan Selalu Berjalan",
                 d: "Tapi budget habis tanpa hasil reservasi yang terukur.",
               },
@@ -149,22 +149,22 @@ export default function KlinikPage() {
           <ol className="mx-auto mt-10 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {[
               {
-                n: "01",
+                n: "1",
                 t: "Pilih Treatment Andalan",
                 d: "Mengurasi treatment paling potensial untuk dijadikan ujung tombak penawaran.",
               },
               {
-                n: "02",
+                n: "2",
                 t: "Tarik Perhatian",
                 d: "Menghentikan scrolling audiens dengan konten visual dan campaign yang relevan dengan keluhan mereka.",
               },
               {
-                n: "03",
+                n: "3",
                 t: "Bangun Kepercayaan",
                 d: "Menghapus keraguan calon pasien dengan edukasi medis dan social proof yang solid.",
               },
               {
-                n: "04",
+                n: "4",
                 t: "Kunci Reservasi",
                 d: "Mengarahkan minat yang sudah terbangun langsung ke admin WhatsApp untuk booking jadwal.",
               },
@@ -260,7 +260,7 @@ export default function KlinikPage() {
                     aria-hidden="true"
                     className="shrink-0 text-sm font-bold text-impost-third tabular-nums"
                   >
-                    0{i + 1}
+                    {i + 1}
                   </span>
                 </div>
               </Reveal>

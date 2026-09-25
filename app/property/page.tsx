@@ -102,17 +102,17 @@ export default function PropertyPage() {
           <div className="mt-10 space-y-8">
             {[
               {
-                n: "01",
+                n: "1",
                 t: "Project Invisible (Tidak Terlihat)",
                 d: "Project Anda kalah saing dan tidak muncul saat buyer potensial sedang mencari properti.",
               },
               {
-                n: "02",
+                n: "2",
                 t: "Leads Sampah (Tidak Berkualitas)",
                 d: 'WhatsApp sales penuh, tapi 90% hanya "tanya-tanya" tanpa daya beli yang sesuai.',
               },
               {
-                n: "03",
+                n: "3",
                 t: "Sales Kehabisan Waktu",
                 d: "Marketing gagal membangun trust di awal, sehingga sales harus lelah menjelaskan semuanya dari nol berulang kali.",
               },
@@ -159,22 +159,22 @@ export default function PropertyPage() {
           <ol className="mx-auto mt-10 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {[
               {
-                n: "01",
+                n: "1",
                 t: "Tarik Audiens Tepat",
                 d: "Iklan dan konten muncul hanya di depan mereka yang sedang mencari dan mampu membeli.",
               },
               {
-                n: "02",
+                n: "2",
                 t: "Bangun Ketertarikan",
                 d: "Mengubah fitur project menjadi alasan kuat mengapa mereka harus membeli sekarang.",
               },
               {
-                n: "03",
+                n: "3",
                 t: "Bentuk Kepercayaan",
                 d: "Mempresentasikan lokasi, reputasi developer, dan value project secara elegan dan meyakinkan.",
               },
               {
-                n: "04",
+                n: "4",
                 t: "Arahkan Konversi",
                 d: "Mendorong buyer yang sudah teredukasi langsung ke WhatsApp sales Anda.",
               },
@@ -284,7 +284,7 @@ export default function PropertyPage() {
                     aria-hidden="true"
                     className="shrink-0 text-sm font-bold text-impost-third tabular-nums"
                   >
-                    0{i + 1}
+                    {i + 1}
                   </span>
                 </div>
               </Reveal>
