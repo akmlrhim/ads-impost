@@ -321,36 +321,6 @@ export function SiteHeader({
   );
 }
 
-export function Faq({ items }: { items: { q: string; a: string }[] }) {
-  return (
-    <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-impost-third/25">
-      {items.map((f, i) => (
-        <Reveal key={f.q} delay={i * 40}>
-          <details
-            className="group border-b border-impost-third/20 last:border-0"
-            {...(i === 0 ? { open: true } : {})}
-          >
-            <summary className="cursor-pointer list-none px-6 py-4 font-bold marker:hidden [&::-webkit-details-marker]:hidden">
-              <span className="flex items-center justify-between gap-4">
-                {f.q}
-                <span
-                  aria-hidden="true"
-                  className="text-impost-primary transition-transform group-open:rotate-45"
-                >
-                  +
-                </span>
-              </span>
-            </summary>
-            <p className="px-6 pb-5 leading-relaxed text-impost-ink-dim">
-              {f.a}
-            </p>
-          </details>
-        </Reveal>
-      ))}
-    </div>
-  );
-}
-
 export function FinalCta({
   title,
   desc,
@@ -422,13 +392,29 @@ export function SiteFooter({
         </div>
         <div className="md:col-span-4">
           <p className="text-sm font-extrabold tracking-wider uppercase">
-            Layanan
+            Legal
           </p>
           <ul className="mt-3 space-y-2 text-sm text-impost-ink-dim">
-            <li>Strategy Marketing</li>
-            <li>Content dan Social Media</li>
-            <li>Performance Marketing</li>
-            <li>Website dan Landing Page</li>
+            <li>
+              <a
+                href="https://legal.impostmedia.com/id/kebijakan-privasi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline-offset-4 hover:text-impost-ink hover:underline"
+              >
+                Kebijakan Privasi
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://legal.impostmedia.com/id/syarat-ketentuan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline-offset-4 hover:text-impost-ink hover:underline"
+              >
+                Syarat &amp; Ketentuan
+              </a>
+            </li>
           </ul>
         </div>
         <div className="md:col-span-3">
