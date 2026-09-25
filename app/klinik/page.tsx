@@ -3,9 +3,7 @@ import {
   Chevron,
   CountUp,
   CtaPlate,
-  Faq,
   FinalCta,
-  ParallaxBand,
   Reveal,
   Section,
   SectionHeading,
@@ -28,7 +26,6 @@ const NAV = [
   { href: "#solusi", label: "Solusi" },
   { href: "#bukti", label: "Bukti" },
   { href: "#layanan", label: "Layanan" },
-  { href: "#faq", label: "FAQ" },
 ];
 
 export default function KlinikPage() {
@@ -72,24 +69,6 @@ export default function KlinikPage() {
             </Reveal>
           </div>
         </section>
-
-        {/* TRUST STRIP under hero */}
-        <div className="border-b border-impost-third/25">
-          <dl className="mx-auto grid w-full max-w-6xl grid-cols-1 divide-y divide-impost-third/20 px-5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 md:px-8">
-            {[
-              { v: "Reservasi", l: "Fokus jadwal terisi" },
-              { v: "Edukasi", l: "Konten yang membangun trust" },
-              { v: "Terukur", l: "Leads dan ROAS jelas" },
-            ].map((s) => (
-              <div key={s.l} className="px-2 py-5 text-center">
-                <dd className="text-xl font-extrabold tracking-tight">
-                  {s.v}
-                </dd>
-                <dt className="mt-1 text-sm text-impost-ink-dim">{s.l}</dt>
-              </div>
-            ))}
-          </dl>
-        </div>
 
         {/* 2 - PROBLEM AGITATION: staggered ledger */}
         <Section id="masalah">
@@ -219,11 +198,6 @@ export default function KlinikPage() {
               </p>
             </div>
           </Reveal>
-          <ParallaxBand
-            src="https://picsum.photos/seed/impost-klinik-room/1600/700"
-            alt="Suasana ruang treatment klinik yang rapi"
-            caption="Ruang treatment yang rapi membantu pasien percaya sebelum datang."
-          />
         </Section>
 
         {/* 5 - SERVICES: grouped rows */}
@@ -292,27 +266,6 @@ export default function KlinikPage() {
               </Reveal>
             ))}
           </div>
-        </Section>
-
-        {/* FAQ */}
-        <Section id="faq" muted>
-          <SectionHeading title="Sering ditanyakan klinik" />
-          <Faq
-            items={[
-              {
-                q: "Apakah cocok untuk klinik baru?",
-                a: "Cocok. Justru di awal penting menentukan treatment magnet dan jalur reservasi agar budget tidak terbuang.",
-              },
-              {
-                q: "Siapa yang membalas chat pasien?",
-                a: "Tim Anda tetap membalas. Kami bantu siapkan template respons dan alur follow up agar chat hangat tidak dingin.",
-              },
-              {
-                q: "Bagaimana sistem kontraknya?",
-                a: "Fleksibel per bulan setelah periode awal. Kami jaga dengan laporan transparan, bukan kontrak yang mengikat.",
-              },
-            ]}
-          />
         </Section>
 
         {/* 6 - CLOSING CTA */}

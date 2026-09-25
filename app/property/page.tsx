@@ -3,7 +3,6 @@ import {
   Chevron,
   CountUp,
   CtaPlate,
-  Faq,
   FinalCta,
   ParallaxBand,
   Reveal,
@@ -28,7 +27,6 @@ const NAV = [
   { href: "#solusi", label: "Solusi" },
   { href: "#bukti", label: "Bukti" },
   { href: "#layanan", label: "Layanan" },
-  { href: "#faq", label: "FAQ" },
 ];
 
 export default function PropertyPage() {
@@ -316,27 +314,6 @@ export default function PropertyPage() {
               </Reveal>
             ))}
           </div>
-        </Section>
-
-        {/* FAQ */}
-        <Section id="faq" muted>
-          <SectionHeading title="Sering ditanyakan developer" />
-          <Faq
-            items={[
-              {
-                q: "Cocok untuk project apa?",
-                a: "Perumahan, ruko, apartemen, dan tanah kavling. Kuncinya ada di kejelasan offer dan kesiapan sales menindaklanjuti.",
-              },
-              {
-                q: "Bagaimana kualitas leads dijaga?",
-                a: "Dengan targeting tepat, materi yang memfilter seperti harga dan lokasi, dan optimasi rutin ke leads yang responsif.",
-              },
-              {
-                q: "Apakah termasuk foto dan video?",
-                a: "Ada paket yang termasuk creative production seperti foto, video, dan brosur digital. Disesuaikan dengan kebutuhan project.",
-              },
-            ]}
-          />
         </Section>
 
         {/* 6 - CLOSING CTA */}
