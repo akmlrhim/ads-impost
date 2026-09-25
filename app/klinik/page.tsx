@@ -108,9 +108,10 @@ export default function KlinikPage() {
               <Reveal key={p.n} delay={i * 60}>
                 <MediaRow
                   media={p.img}
-                  className={`grid gap-2 border-t border-impost-third/25 pt-5 pb-5 md:grid-cols-12 md:gap-6 ${
+                  outerClassName={`border-t border-impost-third/25 ${
                     i === 1 ? "md:ml-16" : i === 2 ? "md:ml-32" : ""
                   }`}
+                  className="grid gap-2 pt-5 pb-5 md:grid-cols-12 md:gap-6"
                 >
                   <p className="text-sm font-extrabold text-impost-primary tabular-nums md:col-span-1">
                     {p.n}

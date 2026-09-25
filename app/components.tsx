@@ -243,16 +243,20 @@ export function MediaRow({
   media,
   children,
   className = "",
+  outerClassName = "",
   align = "left",
 }: {
   media: string;
   children: React.ReactNode;
+  /** Applied to the content grid inside the media layer. */
   className?: string;
+  /** Applied to the full-bleed wrapper, so the photo offsets with the row. */
+  outerClassName?: string;
   align?: "left" | "center";
 }) {
   return (
     <div
-      className={`group relative isolate overflow-hidden ${className}`}
+      className={`group relative isolate overflow-hidden ${outerClassName}`}
     >
       <Image
         src={media}
@@ -269,8 +273,8 @@ export function MediaRow({
       <div
         className={
           align === "center"
-            ? "relative mx-auto max-w-xl text-center"
-            : "relative"
+            ? `relative mx-auto max-w-xl text-center ${className}`
+            : `relative ${className}`
         }
       >
         {children}
