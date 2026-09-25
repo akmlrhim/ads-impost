@@ -278,32 +278,6 @@ export default function PropertyPage() {
           </ul>
         </Section>
 
-        {/* TESTIMONI */}
-        <Section id="testimoni">
-          <SectionHeading title="Kata tim developer" align="left" />
-          <div className="mt-8 grid gap-10 md:grid-cols-2">
-            {[
-              {
-                q: "Inquiry sudah tahu tipe unit dan harga. Closing lebih cepat.",
-                n: "Budi Santoso, Marketing Property, Tangerang",
-              },
-              {
-                q: "Konten project jauh lebih mudah dipahami buyer awam.",
-                n: "Dewi Anggraini, Developer, Bogor",
-              },
-            ].map((t, i) => (
-              <Reveal as="figure" key={t.n} delay={i * 60}>
-                <blockquote className="border-l-2 border-impost-secondary/60 pl-5 text-xl leading-snug font-bold">
-                  &ldquo;{t.q}&rdquo;
-                </blockquote>
-                <figcaption className="mt-3 pl-5 text-sm text-impost-ink-dim">
-                  {t.n}
-                </figcaption>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
-
         {/* 6 - CLOSING CTA */}
         <FinalCta
           title="Project Anda Bernilai Miliaran. Jangan Serahkan Marketingnya Pada Strategi Coba-Coba."

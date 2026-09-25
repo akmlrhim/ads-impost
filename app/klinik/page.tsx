@@ -254,32 +254,6 @@ export default function KlinikPage() {
           </ul>
         </Section>
 
-        {/* TESTIMONI */}
-        <Section id="testimoni">
-          <SectionHeading title="Kata owner klinik" align="left" />
-          <div className="mt-8 grid gap-10 md:grid-cols-2">
-            {[
-              {
-                q: "Akhirnya tahu treatment mana yang jadi magnet.",
-                n: "Ayu Lestari, Owner Klinik Ayu, Jakarta",
-              },
-              {
-                q: "Chat masuk lebih rapi. Admin tinggal follow up.",
-                n: "Rina Marlina, Owner Klinik Rina, Bandung",
-              },
-            ].map((t, i) => (
-              <Reveal as="figure" key={t.n} delay={i * 60}>
-                <blockquote className="border-l-2 border-impost-primary/60 pl-5 text-xl leading-snug font-bold">
-                  &ldquo;{t.q}&rdquo;
-                </blockquote>
-                <figcaption className="mt-3 pl-5 text-sm text-impost-ink-dim">
-                  {t.n}
-                </figcaption>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
-
         {/* 6 - CLOSING CTA */}
         <FinalCta
           title="Jangan Tunggu Jadwal Kosong Baru Panik Mencari Pasien."

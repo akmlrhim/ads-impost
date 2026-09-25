@@ -38,7 +38,7 @@ export function Reveal({
   children: React.ReactNode;
   delay?: number;
   className?: string;
-  as?: "div" | "li" | "section" | "span" | "figure";
+  as?: "div" | "li" | "section" | "span";
 }) {
   const reduce = useReducedMotion();
   if (reduce) {
@@ -52,9 +52,7 @@ export function Reveal({
         ? motion.section
         : as === "span"
           ? motion.span
-          : as === "figure"
-            ? motion.figure
-            : motion.div
+          : motion.div
   ) as typeof motion.div;
   return (
     <M
