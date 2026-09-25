@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { CaretRight, WhatsappLogo } from "@phosphor-icons/react";
 import {
@@ -203,6 +204,78 @@ export function CtaPlate({
     >
       {children}
     </motion.a>
+  );
+}
+
+// Full-bleed hero backdrop. The photo sits under a heavy scrim so the
+// headline keeps AAA contrast; it reads as atmosphere, not as focal imagery.
+export function HeroBackdrop({
+  src,
+  alt,
+  priority = false,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+  className?: string;
+}) {
+  return (
+    <div aria-hidden className={`absolute inset-0 overflow-hidden ${className}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        priority={priority}
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-impost-fifth/82" />
+      <div className="absolute inset-0 bg-gradient-to-b from-impost-fifth/70 via-impost-fifth/60 to-impost-fifth" />
+      <div className="absolute inset-0 bg-gradient-to-r from-impost-fifth via-transparent to-impost-fifth/70" />
+    </div>
+  );
+}
+
+// Problem row with a photo that surfaces on hover. The image starts nearly
+// invisible and scales in, so the text stays the primary read at rest.
+export function MediaRow({
+  media,
+  children,
+  className = "",
+  align = "left",
+}: {
+  media: string;
+  children: React.ReactNode;
+  className?: string;
+  align?: "left" | "center";
+}) {
+  return (
+    <div
+      className={`group relative isolate overflow-hidden ${className}`}
+    >
+      <Image
+        src={media}
+        alt=""
+        aria-hidden
+        fill
+        sizes="(min-width: 768px) 40vw, 100vw"
+        className="-z-10 scale-100 object-cover opacity-[0.14] saturate-[0.7] transition-all duration-700 ease-out group-hover:scale-[1.06] group-hover:opacity-30 group-hover:saturate-100 motion-reduce:transition-none"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-impost-fifth via-impost-fifth/85 to-transparent"
+      />
+      <div
+        className={
+          align === "center"
+            ? "relative mx-auto max-w-xl text-center"
+            : "relative"
+        }
+      >
+        {children}
+      </div>
+    </div>
   );
 }
 

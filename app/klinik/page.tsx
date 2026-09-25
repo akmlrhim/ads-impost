@@ -4,6 +4,8 @@ import {
   CountUp,
   CtaPlate,
   FinalCta,
+  HeroBackdrop,
+  MediaRow,
   Reveal,
   Section,
   SectionHeading,
@@ -39,9 +41,14 @@ export default function KlinikPage() {
       />
 
       <main>
-        {/* 1 - HERO: full-height centered manifesto, no image, no eyebrow */}
-        <section className="flex min-h-[100dvh] items-center border-b border-impost-third/25">
-          <div className="mx-auto w-full max-w-4xl px-5 py-20 text-center md:px-8">
+        {/* 1 - HERO: full-height centered manifesto over a photo backdrop */}
+        <section className="relative flex min-h-[100dvh] items-center overflow-hidden border-b border-impost-third/25">
+          <HeroBackdrop
+            src="/img/klinik-hero.jpg"
+            alt="Dokter konsultasi dengan pasien di klinik"
+            priority
+          />
+          <div className="relative mx-auto w-full max-w-4xl px-5 py-20 text-center md:px-8">
             <Reveal>
               <h1 className="text-4xl font-extrabold tracking-tight text-balance md:text-6xl md:leading-[1.05]">
                 Biaya Operasional Jalan Terus, Tapi Jadwal Treatment Sering
@@ -83,21 +90,25 @@ export default function KlinikPage() {
                 n: "1",
                 t: "Posting Setiap Hari",
                 d: "Tapi yang datang bukan pasien berkualitas, hanya penonton.",
+                img: "/img/klinik-m1.jpg",
               },
               {
                 n: "2",
                 t: "Punya Banyak Treatment",
                 d: 'Tapi tidak ada satupun yang menonjol sebagai "Magnet Pasien".',
+                img: "/img/klinik-m2.jpg",
               },
               {
                 n: "3",
                 t: "Iklan Selalu Berjalan",
                 d: "Tapi budget habis tanpa hasil reservasi yang terukur.",
+                img: "/img/klinik-m3.jpg",
               },
             ].map((p, i) => (
               <Reveal key={p.n} delay={i * 60}>
-                <div
-                  className={`grid gap-2 border-t border-impost-third/25 pt-5 md:grid-cols-12 md:gap-6 ${
+                <MediaRow
+                  media={p.img}
+                  className={`grid gap-2 border-t border-impost-third/25 pt-5 pb-5 md:grid-cols-12 md:gap-6 ${
                     i === 1 ? "md:ml-16" : i === 2 ? "md:ml-32" : ""
                   }`}
                 >
@@ -110,7 +121,7 @@ export default function KlinikPage() {
                   <p className="leading-relaxed text-impost-ink-dim md:col-span-5">
                     {p.d}
                   </p>
-                </div>
+                </MediaRow>
               </Reveal>
             ))}
           </div>

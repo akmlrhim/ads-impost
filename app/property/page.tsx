@@ -4,7 +4,8 @@ import {
   CountUp,
   CtaPlate,
   FinalCta,
-  ParallaxBand,
+  HeroBackdrop,
+  MediaRow,
   Reveal,
   Section,
   SectionHeading,
@@ -41,9 +42,14 @@ export default function PropertyPage() {
       />
 
       <main>
-        {/* 1 - HERO: full-height centered manifesto, no image, no eyebrow */}
-        <section className="flex min-h-[100dvh] items-center border-b border-impost-third/25">
-          <div className="mx-auto w-full max-w-4xl px-5 py-20 text-center md:px-8">
+        {/* 1 - HERO: full-height centered manifesto over a photo backdrop */}
+        <section className="relative flex min-h-[100dvh] items-center overflow-hidden border-b border-impost-third/25">
+          <HeroBackdrop
+            src="/img/property-hero.jpg"
+            alt="Menara apartemen modern"
+            priority
+          />
+          <div className="relative mx-auto w-full max-w-4xl px-5 py-20 text-center md:px-8">
             <Reveal>
               <h1 className="text-4xl font-extrabold tracking-tight text-balance md:text-6xl md:leading-[1.05]">
                 Stop Bakar Budget Marketing Kalau Sales Masih Harus Memulai
@@ -72,24 +78,6 @@ export default function PropertyPage() {
           </div>
         </section>
 
-        {/* TRUST STRIP under hero */}
-        <div className="border-b border-impost-third/25">
-          <dl className="mx-auto grid w-full max-w-6xl grid-cols-1 divide-y divide-impost-third/20 px-5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 md:px-8">
-            {[
-              { v: "Matang", l: "Buyer teredukasi sebelum ke sales" },
-              { v: "Otomatis", l: "Corong yang menyaring inquiry" },
-              { v: "Terukur", l: "Metrik jelas tiap campaign" },
-            ].map((s) => (
-              <div key={s.l} className="px-2 py-5 text-center">
-                <dd className="text-xl font-extrabold tracking-tight">
-                  {s.v}
-                </dd>
-                <dt className="mt-1 text-sm text-impost-ink-dim">{s.l}</dt>
-              </div>
-            ))}
-          </dl>
-        </div>
-
         {/* 2 - PROBLEM AGITATION: staggered ledger */}
         <Section id="masalah">
           <SectionHeading
@@ -103,21 +91,25 @@ export default function PropertyPage() {
                 n: "1",
                 t: "Project Invisible (Tidak Terlihat)",
                 d: "Project Anda kalah saing dan tidak muncul saat buyer potensial sedang mencari properti.",
+                img: "/img/property-m1.jpg",
               },
               {
                 n: "2",
                 t: "Leads Sampah (Tidak Berkualitas)",
                 d: 'WhatsApp sales penuh, tapi 90% hanya "tanya-tanya" tanpa daya beli yang sesuai.',
+                img: "/img/property-m2.jpg",
               },
               {
                 n: "3",
                 t: "Sales Kehabisan Waktu",
                 d: "Marketing gagal membangun trust di awal, sehingga sales harus lelah menjelaskan semuanya dari nol berulang kali.",
+                img: "/img/property-m3.jpg",
               },
             ].map((p, i) => (
               <Reveal key={p.n} delay={i * 60}>
-                <div
-                  className={`grid gap-2 border-t border-impost-third/25 pt-5 md:grid-cols-12 md:gap-6 ${
+                <MediaRow
+                  media={p.img}
+                  className={`grid gap-2 border-t border-impost-third/25 pt-5 pb-5 md:grid-cols-12 md:gap-6 ${
                     i === 1 ? "md:ml-16" : i === 2 ? "md:ml-32" : ""
                   }`}
                 >
@@ -130,7 +122,7 @@ export default function PropertyPage() {
                   <p className="leading-relaxed text-impost-ink-dim md:col-span-5">
                     {p.d}
                   </p>
-                </div>
+                </MediaRow>
               </Reveal>
             ))}
           </div>
@@ -234,11 +226,6 @@ export default function PropertyPage() {
               pasar, dan budget penawaran.
             </p>
           </Reveal>
-          <ParallaxBand
-            src="https://picsum.photos/seed/impost-property-tower/1600/700"
-            alt="Fasad tower property modern"
-            caption="Visual project yang jelas membantu buyer mempertimbangkan lebih cepat."
-          />
         </Section>
 
         {/* 5 - SERVICES: grouped rows */}
