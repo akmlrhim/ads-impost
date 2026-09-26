@@ -398,6 +398,7 @@ export function SiteHeader({
 }
 
 export function FinalCta({
+  id,
   title,
   desc,
   ctaHref,
@@ -405,6 +406,7 @@ export function FinalCta({
   note,
   tone = "gold",
 }: {
+  id?: string;
   title: string;
   desc: string;
   ctaHref: string;
@@ -413,7 +415,7 @@ export function FinalCta({
   tone?: "gold" | "bronze";
 }) {
   return (
-    <section className="bg-impost-fourth">
+    <section id={id} className="scroll-mt-20 bg-impost-fourth">
       <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 py-14 md:px-8 md:py-20 lg:grid-cols-12 lg:items-center">
         <Reveal className="lg:col-span-7">
           <h2 className="max-w-xl text-3xl font-extrabold tracking-tight text-balance md:text-4xl">
@@ -447,7 +449,7 @@ export function SiteFooter({
   return (
     <footer className="bg-impost-fifth">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-12 md:grid-cols-12 md:px-8">
-        <div className="md:col-span-5">
+        <div className="md:col-span-8">
           <img
             src="/logo_original.webp"
             alt="Impost"
@@ -493,20 +495,10 @@ export function SiteFooter({
             </li>
           </ul>
         </div>
-        <div className="md:col-span-3">
-          <p className="text-sm font-extrabold tracking-wider uppercase">
-            Operasional
-          </p>
-          <ul className="mt-3 space-y-2 text-sm text-impost-ink-dim">
-            <li>Senin sampai Sabtu, 09.00 sampai 18.00 WIB</li>
-            <li>Respons kurang dari 1x24 jam</li>
-          </ul>
-        </div>
       </div>
       <div className="border-t border-impost-third/25">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-1 px-5 py-5 text-xs text-impost-ink-dim md:flex-row md:items-center md:justify-between md:px-8">
-          <p>© 2026 Impost. Seluruh hak cipta dilindungi.</p>
-          <p>Hasil campaign dapat berbeda tiap project.</p>
+          <p>© 2026 Impost Media Indonesia. Seluruh hak cipta dilindungi.</p>
         </div>
       </div>
     </footer>

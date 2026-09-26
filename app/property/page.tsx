@@ -66,7 +66,7 @@ export default function PropertyPage() {
             </Reveal>
             <Reveal delay={180}>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <CtaPlate href={WA_PROPERTY} tone="bronze">
+                <CtaPlate href="#closing" tone="bronze">
                   Konsultasikan Project Property Anda
                   <Chevron className="ml-2" />
                 </CtaPlate>
@@ -280,6 +280,7 @@ export default function PropertyPage() {
 
         {/* 6 - CLOSING CTA */}
         <FinalCta
+          id="closing"
           title="Project Anda Bernilai Miliaran. Jangan Serahkan Marketingnya Pada Strategi Coba-Coba."
           desc="Amankan investasi Anda dengan strategi yang terukur. Kami siap membantu project Anda agar mudah ditemukan, dipertimbangkan, dipercaya, dan dibeli."
           ctaHref={WA_PROPERTY}

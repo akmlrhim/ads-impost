@@ -65,7 +65,7 @@ export default function KlinikPage() {
             </Reveal>
             <Reveal delay={180}>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <CtaPlate href={WA_KLINIK}>
+                <CtaPlate href="#closing">
                   Konsultasikan Strategi Klinik Anda
                   <Chevron className="ml-2" />
                 </CtaPlate>
@@ -256,6 +256,7 @@ export default function KlinikPage() {
 
         {/* 6 - CLOSING CTA */}
         <FinalCta
+          id="closing"
           title="Jangan Tunggu Jadwal Kosong Baru Panik Mencari Pasien."
           desc="Saat klinik sepi, Anda bukan sedang membangun bisnis. Anda sedang bertahan hidup. Bangun keran pasien baru yang konsisten dari sekarang."
           ctaHref={WA_KLINIK}
