@@ -11,6 +11,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ads.impostmedia.com"),
   title: "Impost - Marketing Klinik & Property Punya Jalur",
   description:
     "Impost membantu klinik dan developer property membangun jalur dari perhatian menjadi reservasi dan inquiry.",
@@ -22,11 +23,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id" className={`${jakarta.variable} h-full antialiased`}>
       <head>
