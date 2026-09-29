@@ -13,9 +13,9 @@ import {
   SiteHeader,
 } from "../components";
 
-// TODO: ganti dengan nomor WA asli. Pola pre-filled text siap pakai.
+// Pola pre-filled text siap pakai.
 const WA_PROPERTY =
-  "https://wa.me/6280000000000?text=Halo%20Impost%2C%20saya%20ingin%20konsultasikan%20marketing%20project%20property%20saya.";
+  "https://wa.me/6283147802761?text=Halo%20Impost%2C%20saya%20ingin%20konsultasikan%20marketing%20project%20property%20saya.";
 
 export const metadata: Metadata = {
   title: "Impost - Marketing Property Punya Jalur",
@@ -35,7 +35,7 @@ export default function PropertyPage() {
     <div>
       <SiteHeader
         vertical="Property"
-        ctaHref={WA_PROPERTY}
+        ctaHref="#closing"
         ctaLabel="Konsultasikan Project Anda"
         links={NAV}
         tone="bronze"

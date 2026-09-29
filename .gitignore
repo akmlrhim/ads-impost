@@ -43,6 +43,10 @@ next-env.d.ts
 # codegraph
 .codegraph/
 
+# graphify
+graphify-out/
+
 # agentic
 AGENTS.md
 CLAUDE.md
+.opencode/

@@ -1,0 +1,83 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build & rsync
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      DEPLOY_HOST: ${{ secrets.SSH_HOST }}
+      DEPLOY_USER: ${{ secrets.SSH_USER }}
+      DEPLOY_DIR: ${{ secrets.SSH_TARGET_DIR }}
+      DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      DEPLOY_PORT: ${{ secrets.SSH_PORT }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build static export
+        run: bun run build
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: Verify output
+        run: |
+          test -f out/.htaccess          || { echo "out/.htaccess hilang"; exit 1; }
+          test -f out/klinik/index.html  || { echo "out/klinik/index.html hilang"; exit 1; }
+          test -f out/property/index.html || { echo "out/property/index.html hilang"; exit 1; }
+          test -f out/404.html            || { echo "out/404.html hilang"; exit 1; }
+          echo "--- isi out/ ---"
+          ls -1 out
+
+      - name: Setup SSH known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "${DEPLOY_PORT:-22}" -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+          ssh-keygen -lf ~/.ssh/known_hosts || true
+
+      - name: Guard target directory
+        run: |
+          if [ -z "$DEPLOY_DIR" ]; then echo "SSH_TARGET_DIR kosong"; exit 1; fi
+          case "$DEPLOY_DIR" in
+            /|/home|/home/*/|"") echo "Target tidak aman: $DEPLOY_DIR"; exit 1 ;;
+          esac
+          case "$DEPLOY_DIR" in
+            *public_html*) ;;
+            *) echo "Warning: target bukan public_html: $DEPLOY_DIR" ;;
+          esac
+          echo "Target: $DEPLOY_DIR"
+
+      - name: Deploy via rsync
+        run: |
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          RSYNC_SSH="ssh -p ${DEPLOY_PORT:-22} -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes -o IdentitiesOnly=yes"
+          DEPLOY_SSH_CMD="ssh -p ${DEPLOY_PORT:-22} -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes -o IdentitiesOnly=yes"
+          $DEPLOY_SSH_CMD "$DEPLOY_USER@$DEPLOY_HOST" "mkdir -p '$DEPLOY_DIR'"
+          rsync -azn --delete -e "$RSYNC_SSH" out/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/"
+          rsync -az --delete --stats -e "$RSYNC_SSH" out/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/"
+          $DEPLOY_SSH_CMD "$DEPLOY_USER@$DEPLOY_HOST" \
+            "ls -1 '$DEPLOY_DIR' | head -20 && echo '--- size ---' && du -sh '$DEPLOY_DIR'"
+
+      - name: Bersihkan key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

@@ -440,7 +440,7 @@ export function FinalCta({
 }
 
 export function SiteFooter({
-  waHref = "https://wa.me/6280000000000",
+  waHref = "https://wa.me/6283147802761",
   vertical = "Klinik dan Property",
 }: {
   waHref?: string;
