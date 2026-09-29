@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import AdBlockerNotice from "./adblock-notice";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -49,6 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {children}
+        <AdBlockerNotice />
       </body>
     </html>
   );
